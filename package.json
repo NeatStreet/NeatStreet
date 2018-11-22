@@ -1,5 +1,5 @@
 {
-  "name": "gordon-library",
+  "name": "neatstreet",
   "version": "0.0.1",
   "description": "## To start server, run ``` npm install npm start ```",
   "main": "server.js",
@@ -26,7 +26,7 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "node": "^6.11.4",
+    "node": "^6.14.4",
     "prettier": "^1.7.4"
   }
 }
