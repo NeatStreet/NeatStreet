@@ -1,0 +1,34 @@
+Final Project Proposal
+Team Members: Emily Hao, Zixin Luo, Malika Nurbekova, Zarni Phyo, Ming Xu, Yang Xu
+
+Final Project Topic
+WPI Gordon Library web application
+
+Introduction & Purpose
+We would like to implement the website for Gordon Library. It will include the book search; tech suite, books, equipment reservation. 
+
+Scope
+WPI Students, Faculty, Library Staff 
+
+Final Project Functionalities 
+	2 Dashboard - staff and user (student and teacher) 
+	Tech suite reservation (improved 25live)
+	Wish-list of books
+	Borrowing stuff (e.g. headsets, laptops, cameras etc.)
+
+Dashboard
+	Dashboard for staff includes functionality of requesting staff ID, searching books through database, add books into database, update books in database, delete books in database, confirm or cancel a request of Tech Suite reservation, check-in, check-out and view dued book. 
+	Dashboard for users(student and teacher) includes functionality of requesting student or teacher ID, searching book through database, request a Tech Suite reservation, add books to wish-list. 
+
+Tech Suite Reservation
+The users will be able to reserve a tech suite from a user-friendly webpage
+The user will be able to cancel or extend the reservation through the webpage as well
+
+Online Library Service
+Staff can manage books like book cataloging (adding), circulation (check-in, check-out), view dued books
+Students can search books, request library to add a specific book, queue a book which is already checkout
+
+Equipment Reservation
+Students can reserve equipment from ATC, such as laptops, cameras etc.
+The reminders to return the equipment
+

@@ -1,0 +1,214 @@
+#text_part1{
+    display: none;
+}
+
+#text_part2{
+    display: none;
+}
+
+#testimonial_text{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    margin-top:70px;
+    font-size:16px;
+}
+
+
+.navbar-default{
+    background:#fff;
+    border:0;
+}
+
+.navbar-brand{
+    font-size:20px;
+    color:#000 !important;
+    font-weight:bold;
+}
+
+#showcase h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+#showcase img{
+    width:90%;
+    margin-left:60px;
+}
+
+#showcase .showcase-right{
+    margin-top:90px;
+}
+
+#testimonial{
+    background:#f1f1f1;
+    padding: 50px 0 30px 0;
+    text-align:center;
+    margin-top:40px;
+}
+
+#testimonial p{
+    font-size:32px;
+    color:#000;
+}
+
+#testimonial p.customer{
+    font-size:20px;
+    color:#666;
+}
+
+#info1 .info-right{
+    margin-top:90px;
+}
+
+#info2{
+    margin:20px 0 60px 0;
+}
+
+#contact{
+    background: url("/img/Boynton.jpg");
+    padding:40px;
+    color:#fff;
+}
+
+footer{
+    padding:30px;
+}
+
+.dashboard_home{
+    background: url("/img/about-wpi-hero.jpg") 70% 0 fixed;
+    height:auto;
+    margin: 0 auto;
+    padding: 200px 0;
+    width: 100%;
+}
+
+.dashboard_home .col-md-5{
+    background:white;
+    border-radius: 10px;
+}
+
+.dashboard_home [class*="col-"]{
+    background-color: white;
+}
+
+.search{
+    position: relative;
+    align-self: center;
+    width: 80px;
+    height: 80px;
+    background: #000;
+    transition: .5s;
+}
+
+.search .icon{
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    top: 0px;
+    right: 0;
+    cursor: pointer;
+}
+
+.search .icon:before{
+    content: '\f002';
+    font-family: fontAwesome;
+}
+
+.search.active .icon:before{
+    content: '\f00d';
+    font-family: fontAwesome;
+}
+
+.search.active{
+    width: 100vw;
+    height: 10.6vh;
+}
+
+.form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.form input{
+    background: transparent;
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.search.active .form{
+    display: block;
+}
+
+.form input::placeholder{
+    color: #fff;
+    font-size: 20px;
+}
+
+#wishlist_home{
+    background: url("/img/studies-engineering-hero.jpg") 70% 0 fixed;
+    height:auto;
+    margin: 0 auto;
+    padding: 200px 0;
+    width: 100%;
+}
+
+#searchlist {
+    position:relative;
+    width: 90%;
+    background-color: #d3d3d3;
+    padding:5px;
+    margin: 10px;
+    border: inset;
+}
+
+#searchauthor {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    font-size: 120%;
+    z-index: 1;
+}
+
+.reservebtn {
+    position: absolute;
+    left: 90%;
+    top:50%;
+}
+
+#book{
+    padding-top: 40px;
+}
+
+.techsuite_home{
+    background: url("/img/WPI-larger.jpg") 70% 0 fixed;
+    height:auto;
+    margin: 0 auto;
+    padding: 200px 0;
+    width: 100%;
+}
+
+.techsuite_home .col-md-8{
+    background:white;
+    border-radius: 10px;
+}
+
+.techsuite_home [class*="col-"]{
+    background-color: white;
+}
+
+#initial_reserve{
+    display: initial;
+}

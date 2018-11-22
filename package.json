@@ -1,0 +1,32 @@
+{
+  "name": "gordon-library",
+  "version": "0.0.1",
+  "description": "## To start server, run ``` npm install npm start ```",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "prettier --write --single-quote \"**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loriluo95/4241Final-Gordon-Library-Webpage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loriluo95/4241Final-Gordon-Library-Webpage/issues"
+  },
+  "homepage": "https://github.com/loriluo95/4241Final-Gordon-Library-Webpage#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "moment": "^2.19.0",
+    "pg": "^7.3.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "node": "^6.11.4",
+    "prettier": "^1.7.4"
+  }
+}

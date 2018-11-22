@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="stylesheet" href="animate.min.css">-->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500"
+        rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+  <script
+          src="https://code.jquery.com/jquery-3.2.1.js"
+          integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+          crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous">
+              
+            </script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+    .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1 >George C. Gordon Library</h1>
+    <h3 >Dashboard</h3>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="./indexDashboard.html">Dashboard</a></li>
+        <li><a href="./indexBookSearch.html">Search for Books</a></li>
+        <li><a href="./indexReserveTechSuite.html">Reserve TechSuite</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="index.html"><span class="glyphicon glyphicon-user"></span> Sign Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="dashboard_home" data-speed="4" data-type="background">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h2 >My borrowed books </h2>
+        <div >  
+        <ul class="list-group" id="reservation_list">
+                    <script>
+                        function displaylist() {
+                            var username = localStorage.getItem("login")
+                            console.log(username)
+                            var req = new XMLHttpRequest();
+
+                            req.responseType = 'json'
+                            req.open('POST', "/book/borrow/dashboard")
+                            req.setRequestHeader('Content-type', 'application/json');
+                            req.onload = function () {
+                                var res = this.response;
+                                console.log(this.response)
+                                buildList(res)
+                            }
+                            req.send(JSON.stringify({username}))
+                        }
+                        displaylist()
+                    </script>
+                </ul>
+        <br>
+      </div>
+
+      </div>
+
+      <div class="col-md-5 col-md-offset-1">
+        <h2 >My book reservations</h2>
+        <ul class="list-group" id="reserve_list">
+                    <script>
+                        function displayreservelist() {
+                            var username = localStorage.getItem("login")
+                            console.log(username)
+                            var req = new XMLHttpRequest();
+
+                            req.responseType = 'json'
+                            req.open('POST', "/book/reserve/dashboard")
+                            req.setRequestHeader('Content-type', 'application/json');
+                            req.onload = function () {
+                                var res = this.response;
+                                console.log(this.response)
+                                buildReserveList(res)
+                            }
+                            req.send(JSON.stringify({username}))
+                        }
+                        displayreservelist()
+                    </script>
+                </ul>
+    </div>
+  </div>
+  </div>
+</section>
+<br>
+
+
+<footer class="container-fluid text-center">
+  <p>LibraryIsAlive CopyRight</p>
+</footer>
+<script>
+    function buildList(A) {
+        var i, toAppendString = "";
+        for (i = 0; i < A.length; i++) {
+            toAppendString += compiled(A[i]);
+        }
+        document.querySelector("#reservation_list").innerHTML = toAppendString;
+
+    }
+
+    function buildReserveList(A) {
+        var i, toAppendString = "";
+        for (i = 0; i < A.length; i++) {
+            toAppendString += reservecompiled(A[i]);
+        }
+        document.querySelector("#reserve_list").innerHTML = toAppendString;
+
+    }
+
+    var compiled = _.template(
+        "<div class='list-group-item list-group-item-success'> " +
+
+            "<div><span>Name: </span><%= name %> </div>" +
+            "<div> <span> Book title: </span> <%= title %></div> " +
+             "<div> <span> Borrowed time: </span> <%= checkin %></p></div></div>" +
+        "<br/>"
+    );
+     var reservecompiled = _.template(
+        "<div class='list-group-item list-group-item-success'> " +
+
+            "<div><span>Name: </span><%= name %> </div>" +
+            "<div> <span> Book title: </span> <%= title %></div> " +
+             "<div> <span> Time Requested: </span> <%= requesttime %></p></div></div>" +
+        "<br/>"
+    );
+</script>
+</body>
+</html>

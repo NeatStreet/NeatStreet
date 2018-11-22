@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Search</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+    <!--<script src="http://underscorejs.org/underscore-min.js"></script>-->
+	<!--<link rel="stylesheet" href="animate.min.css">-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+          integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500"
+          rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <!--<script src="http://underscorejs.org/underscore-min.js"></script>-->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.icon').click(function () {
+                $('.search').toggleClass('active')
+            })
+        })
+    </script>
+	<style>
+		/* Remove the navbar's default rounded borders and increase the bottom margin */
+
+		.navbar {
+			margin-bottom: 50px;
+			border-radius: 0;
+		}
+
+		/* Remove the jumbotron's default bottom margin */
+
+		.jumbotron {
+			margin-bottom: 0;
+		}
+
+		/* Add a gray background color and some padding to the footer */
+
+		footer {
+			background-color: #f2f2f2;
+			padding: 25px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="jumbotron">
+    <div class="container text-center">
+        <h1 animated flipInX>George C. Gordon Library</h1>
+        <p animated flipInX>Staff Book Search</p>
+    </div>
+</div>
+
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse animated flipInX" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="indexStaffDashboard.html">Dashboard</a></li>
+                <li class="active"><a href="./indexStaffBook.html">Books</a></li>
+                <li><a href="./indexConfirmTechSuite.html">Confirm TechSuite</a></li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="index.html"><span class="glyphicon glyphicon-user"></span> Sign Out</a>
+        </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container col-sm-12">
+    <div class="form-inline">
+        <div class = "search">
+            <div class="icon"></div>
+             <div class="form">
+
+            <div>
+			<input id="titleSearched" class="form-control" type="title" class="form-control" size="50" placeholder="Search for isbn...">
+			<!-- <button class="btn btn-default" onclick="searchFor()">Add</button>
+			<button class="btn btn-default" onclick="searchFor()">Update</button>
+			<button class="btn btn-default" onclick="testDelete()">TestDelete</button> -->
+			<button class="btn btn-default" onclick="searchFor()"> Search </button>
+		</div>
+		</div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+
+	<div> <ul id='book'>
+	</ul></div>
+
+
+	<br><br><br><br><br><br><br>
+
+
+	<footer class="container-fluid text-center">
+		<p>George C. Gordon Library CopyRight</p>
+	</footer>
+
+</body>
+
+<script>
+	function searchFor() {
+		var param = document.querySelector("#titleSearched").value
+		var req = new XMLHttpRequest();
+		req.responseType = 'json'
+		req.open('GET', "/book" + "?" + "isbn=" + param)
+		req.onload = function() {
+			const res = this.response
+			buildBook(res);
+		}
+		req.send()
+	}
+
+	function buildBook(book) {
+		var i, toAppendString = "";
+		for (i = 0; i < book.length; i++) {
+			toAppendString += bookhtml(book[i]);
+		}
+		document.querySelector("#book").innerHTML = toAppendString;
+	}
+
+	function buildReservations(A) {
+		var i, toAppendString = "";
+		for (i = 0; i < A.length; i++) {
+			toAppendString += compiled(A[i]);
+		}
+		document.querySelector("#reservations").innerHTML = toAppendString;
+	}
+
+
+	function reservationsDisplay(isbn) {
+		console.log('Displaying reservations for book ', isbn)
+		document.getElementById("reservations").style.display = "initial";
+		var req = new XMLHttpRequest();
+		req.responseType = 'json'
+
+		req.open('GET', "/book/reserve" + "?" + "isbn=" + isbn);
+
+		req.onload = function() {
+			const res = this.response
+			console.log(res)
+			buildReservations(res)
+		}
+		req.send()
+		// req.send(JSON.stringify({userid, isbn}))
+	}
+
+	function skip(isbn) {
+		var req = new XMLHttpRequest();
+		req.responseType = 'json'
+
+		req.open('DELETE', "/book/reserve");
+		req.setRequestHeader("Content-type", "application/json");
+		req.onload = function() {
+            const res = this.response
+            reservationsDisplay(isbn)
+        }
+		req.send(JSON.stringify({
+			isbn
+		}))
+	}
+
+    function borrow(isbn) {
+		console.log("Borrowing book "+isbn+" to the next waiting user")
+		var req = new XMLHttpRequest();
+		req.responseType = 'json'
+		var username = document.getElementById("paragraph").innerText;
+		var payload = document.getElementById("returnText").innerText;
+		console.log(payload)
+
+		req.open('POST', "/book/borrow");
+        req.setRequestHeader("Content-type", "application/json");
+        req.onload = function() {
+            console.log("Added Borrowing book "+isbn+" to the next waiting user")
+			const res = this.response
+			console.log(res)
+			reservationsDisplay(isbn)
+		}
+		req.send(JSON.stringify({
+			isbn
+		}))
+	}
+
+	function returnBook(isbn) {
+		var req = new XMLHttpRequest();
+		req.responseType = 'json'
+
+		req.open('DELETE', "/book/borrow");
+		req.setRequestHeader("Content-type", "application/json");
+		req.onload = function() {
+			const res = this.response
+			if (res.deleted) {
+				document.getElementById("list").style.display = 'none';
+			}
+		}
+		req.send(JSON.stringify({
+			isbn
+		}))
+	}
+
+	var bookhtml = _.template(
+		"<div class='list-group-item list-group-item-warning' style = 'width:1100px'> " +
+		"<img src=<%=cover%> class='img-thumbnail' width='150' height='75'  />" +
+		"<div id='searchauthor'><%= title %><br/><%= authors %></div>" +
+		"<button class='btn btn-default reservebtn' id='reservation_list' style='display:initial' onclick='reservationsDisplay(<%=isbn%>)' type='Submit'>Reservations</button> " +
+		"<ul id='reservations' class='form-inline' style='display: none;'></ul>" +
+		"</div>"
+	);
+
+
+
+	var compiled = _.template(
+        "<br><br><br>"+
+        "<li id='list' style='display:initial'><p id='paragraph' style='display:initial'><%= username %></p>" +
+        "<p id='returnText' style='display:none'> Borrower: <%= username %>, ReservationID: <%= bookreserveid %>, Borrow Date: <%= requesttime %></p>" +
+        "<button id='skip_button' style='display:initial' type='button' class='btn btn-default' onclick='skip(<%= isbn %>)' type='Submit'>Skip</button> " +
+        "<button id='borrow_button' style='display:initial' type='button' class='btn btn-default' onclick='borrow(<%= isbn %>)'>Borrow</button>" +
+        "<button id='return_button' style='display:none' class='btn btn-default' onclick='returnBook(<%= isbn %>)'>Return</button></li>"
+		// "<div id='borrower_info' style='display: none;'>"+
+		// "<p>Name: <%= borrowerName %></p>"+
+		// "<p>ID: <%= borrowerId %></p>"+
+		// "<p>Email: <%= borrowerEmail %></p>"+
+		// "<p>ReturnDate: <%= returnDate %></p></div>"+
+		// "</li></div>"
+	);
+</script>
+
+</html>
