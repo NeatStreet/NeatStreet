@@ -2,11 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="refresh" content="3;url=donorProfile.html" />﻿
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Donor Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="/dist/js/bootstrap-formhelpers.min.js"></script>
+
 </head>
 <body>
-<h1>DonorProfile</h1>
+<div class="nav-container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="nav-home" href="index.html">
+                    NeatStreet
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Available Items <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Women</a></li>
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Kids</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="#intro">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="client-profile">
+    <h1>Donor Profile</h1>
+    <p><span class="glyphicon glyphicon-pencil"></span>Click text to edit</p>
+    <form>
+        <div class="form-group">
+            <label for="emailAddress">Email address</label>
+            <div id="emailAddress" contentEditable="true">ClientName</div>
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" value="12345">
+        </div>
+        <div class="form-group">
+            <label for="zipCode">Email address</label>
+            <div id="zipCode" contentEditable="true">94035</div>
+            <small id="zipCodeHelp" class="form-text text-muted">We'll find safe pick up locations near you based on the zip code.</small>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <div id="phoneNumber" contentEditable="true" class="input-medium bfh-phone" data-format="+1 (ddd) ddd-dddd">1234567890</div>
+        </div>
+        <div class="form-group">
+            <label for="exampleSelect2">Available Pickup Locations</label>
+            <select multiple class="form-control" id="exampleSelect2">
+                <option>0.5 mile - Carnegie Mellon University</option>
+                <option>0.6 miles - San Jose Shelter</option>
+                <option>0.7 miles - WeHope</option>
+                <option>0.8 miles - LifeMove</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <script>
+    </script>
+</div>
 </body>
 </html>
