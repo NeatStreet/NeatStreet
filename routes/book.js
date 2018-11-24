@@ -68,7 +68,7 @@ router.post('/reserve', (req, res) => {
             )
         }
     )
-})
+});
 
 router.delete('/reserve', (req, res) => {
     const { isbn } = req.body
