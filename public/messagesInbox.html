@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+</head>
+
+
+<body>
+
+<div class="nav-container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="nav-home" href="index.html">
+                    NeatStreet
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Available Items <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Women</a></li>
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Kids</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="#intro">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <!-- contacts card -->
+    <div class="card card-default" id="card_contacts">
+        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+            <ul class="list-group pull-down" id="contact-list">
+                <li class="list-group-item">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">Robin</label>
+                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                            <br>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <span class="text-muted small text-truncate">Hello, I'd be glad to lend you my jacket...</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">Kelly</label>
+                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <br>
+                            <span class="text-muted small text-truncate">What is the correct size of the item listing...</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">Amy</label>
+                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <br>
+                            <span class="text-muted small text-truncate">Will you be able to meet at another location...</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">Alicia</label>
+                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <br>
+                            <span class="text-muted small text-truncate">I'm so glad to hear the shoes fit you well...</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">Jack</label>
+                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <br>
+                            <span class="text-muted small text-truncate">That timing won't work for me, can we reschedule...</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row w-100">
+                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                            <label class="name lead">Steve</label>
+                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                            <br>
+                            <span class="text-muted small text-truncate">Come and visit our shelter anytime you'd like to visit...</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <!--/contacts list-->
+        </div>
+    </div>
+</div>
+
+
+
+<footer>
+    <p class="text-center">NeatStreet Copyright &copy; 2018</p>
+</footer>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    function selectUser(){
+      window.location.href = '/messagesUser.html';
+    }
+
+  window.sr = ScrollReveal();
+  sr.reveal('.navbar', {
+    duration: 2000,
+    origin:'bottom'
+  });
+  sr.reveal('.showcase-left', {
+    duration: 2000,
+    origin:'top',
+    distance:'300px'
+  });
+  sr.reveal('.showcase-right', {
+    duration: 2000,
+    origin:'right',
+    distance:'300px'
+  });
+  sr.reveal('.showcase-btn', {
+    duration: 2000,
+    delay: 2000,
+    origin:'bottom'
+  });
+  sr.reveal('#testimonial div', {
+    duration: 2000,
+    origin:'bottom'
+  });
+  sr.reveal('.info-left', {
+    duration: 2000,
+    origin:'left',
+    distance:'300px',
+    viewFactor: 0.2
+  });
+  sr.reveal('.info-right', {
+    duration: 2000,
+    origin:'right',
+    distance:'300px',
+    viewFactor: 0.2
+  });
+</script>
+
+
+</body>
+</html>
+
