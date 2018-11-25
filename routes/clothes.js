@@ -13,6 +13,14 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+	const { owner, name, category, size, location, image } = req.body;
+	db.client.query(
+      `INSERT INTO clothes(owner, name, category, size, location, image) VALUES('${owner}', '${name}', '${category}', 
+      '${size}', '${location}', '${image}')`,
+      () => {
+        res.json({status: 'insert clothes success'});
+        res.end();
+      });
 });
 
 module.exports = router;
