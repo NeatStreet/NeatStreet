@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 	db.client.query(
       `INSERT INTO clothes(owner, name, category, size, location, image) VALUES('${owner}', '${name}', '${category}', 
       '${size}', '${location}', '${image}');`,
-      (err) => {
+      () => {
         res.json({status: 'insert clothes success'});
         res.end();
       });
