@@ -18,8 +18,6 @@ router.post('/', (req, res) => {
   db.client.query(
     `SELECT * FROM users WHERE email = '${email}'`,
     (err, result) => {
-      console.log(result.rows[0].password);
-      console.log(password);
       if(result.rows.length > 0) {
         if(result.rows[0].password !== password) {
           res.json({status: 'wrong password'});
