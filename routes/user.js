@@ -13,11 +13,11 @@ router.get('/:user', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { email, password, type } = req.body;
-
+  const { username, password, type } = req.body;
   db.client.query(
-    `SELECT * FROM users WHERE email = '${email}'`,
+    `SELECT * FROM users WHERE username = '${username}'`,
     (err, result) => {
+      console.log(result.rows);
       if(result.rows.length > 0) {
         if(result.rows[0].password !== password) {
           res.json({status: 'wrong password'});
@@ -28,12 +28,23 @@ router.post('/', (req, res) => {
         }
       } else {
         db.client.query(
-          `INSERT INTO users(email, password, type) VALUES('${email}', '${password}', '${type}')`,
+          `INSERT INTO users(username, password, type) VALUES('${username}', '${password}', '${type}')`,
           () => {
             res.json({status: 'register success'});
             res.end();
           });
       }
+    });
+});
+
+router.put('/', (req, res) => {
+  const { username, password, email, zipCode, phone } = req.body;
+
+  db.client.query(
+    `UPDATE users SET username = '${username}',password = '${password}',email = '${email}', zipcode='${zipCode}',phone='${phone}' WHERE username = '${username}';`,
+    (err, result) => {
+      res.json({profile: 'updated'});
+      res.end();
     });
 });
 
