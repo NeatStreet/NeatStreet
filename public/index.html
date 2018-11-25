@@ -217,10 +217,8 @@
   function login() {
     var email = document.querySelector("#username").value;
     var password = document.querySelector("#password").value;
-    var phone = "";
-    var zipCode = "";
     var options = document.getElementsByName("options");
-    var type;
+    var type = options;
 
     console.log(email);
     for(var i = 0; i < options.length; i++) {
@@ -243,7 +241,7 @@
         window.location.href = '/ClientProfile.html';
       }
     }
-    req.send(JSON.stringify({email, password }));
+    req.send(JSON.stringify({email, password, type }));
   }
 
 

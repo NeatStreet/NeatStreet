@@ -1,6 +1,8 @@
+DROP TABLE IF EXISTS clothes;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
+  username varchar(255),
 	email varchar(255) PRIMARY KEY,
 	password varchar(255),
 	type varchar(255),

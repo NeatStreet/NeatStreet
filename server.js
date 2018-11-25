@@ -1,25 +1,19 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 const path = require('path');
-const pg = require('pg');
-
-const db = require('./db');
-const book = require('./routes/book');
 const user = require('./routes/user');
-const techsuite = require('./routes/techsuite');
-
+const clothes = require('./routes/clothes');
 const app = express();
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // static routes
 app.use(express.static(path.join(__dirname, 'public')));
 // routes
-app.use('/book', book);
-app.use('/user', user);
-app.use ('/techsuite', techsuite);
+app.use('/api/v1/user', user);
+app.use('/api/v1/clothes', clothes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
