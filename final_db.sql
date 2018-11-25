@@ -13,7 +13,7 @@ CREATE TABLE users (
 CREATE TABLE clothes (
  owner varchar(255),
  client varchar(255) DEFAULT '',
- name varchar(255) PRIMARY KEY,
+ name varchar(255),
  category varchar(255),
  size varchar(255),
  location varchar(255),
