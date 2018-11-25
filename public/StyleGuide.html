@@ -396,7 +396,7 @@
                 <br>
                 <!-- /CONTENT -->
 
-                <!-- CONTENT -->
+                <!-- FORM -->
                 <h2 class="page-header" id="form">Form</h2>
 
                 <form  class="px-4 py-3">
@@ -414,6 +414,46 @@
                         </div>
                     </div>
                 </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 class="page-header" id="clickToEdit">Click To Edit</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div id="username" contentEditable="true">DonorName</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" value="12345">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div id="email" contentEditable="true">Click to enter your email</div>
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">Zip Code</label>
+                        <div id="zipCode" contentEditable="true">Click to enter your zip code</div>
+                        <small id="zipCodeHelp" class="form-text text-muted">We'll find safe pick up locations near you based on the zip code.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <div id="phoneNumber" contentEditable="true">Click to enter your phone number</div>
+                    </div>
+                    <form id="location">
+                        <label>Available Pickup Locations</label>
+                        <label><input type="radio" name="location" value="Carnegie Mellon University"> 0.5 mile - Carnegie Mellon University</label>
+                        <label><input type="radio" name="location" value="San Jose Shelter"> 0.6 miles - San Jose Shelter</label>
+                        <label><input type="radio" name="location" value="WeHope"> 0.7 miles - WeHope</label>
+                    </form>
+                </form>
+
                 <!-- /FORM -->
                 <br>
                 <form>
@@ -555,423 +595,6 @@
                     <img src="http://placehold.it/120x100" class="img-circle">
                     <img src="http://placehold.it/120x100" class="img-thumbnail"></p>
                 <!-- /IMAGES -->
-
-
-                <!-- NAV -->
-                <h2 class="page-header" id="nav">Nav</h2>
-
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                </ul>
-                <p></p>
-                <p></p>
-                <ul class="nav nav-pills">
-                    <li class="active">
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                </ul>
-                <p></p>
-                <p></p>
-                <ul class="nav nav-stacked nav-pills">
-                    <li class="active">
-                        <a href="#">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                </ul>
-                <!-- /NAV -->
-
-                <!-- NAVBAR -->
-                <h2 class="page-header" id="navbar">Navbar</h2>
-
-                <div class="navbar">
-                    <div class="navbar-header">
-                        <a href="#" class="navbar-brand">Your Company</a>
-                    </div>
-                    <div class="navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active">
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="navbar navbar-inverse">
-                    <div class="navbar-header">
-                        <a href="#" class="navbar-brand">Your Company</a>
-                    </div>
-                    <div class="navbar-collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active">
-                                <a href="#">Home</a>
-                            </li>
-                            <li>
-                                <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="navbar">
-                    <div class="collapse navbar-collapse">
-                        <a class="btn btn-primary navbar-btn">Navbar Button</a>
-                        <p class="navbar-text navbar-right">Navbar Text</p>
-                    </div>
-                    <!-- /NAVBAR -->
-
-                    <!-- PAGINATION -->
-                    <h2 class="page-header" id="pagination">Pagination</h2>
-
-                    <ul class="pagination">
-                        <li>
-                            <a href="#">Prev</a>
-                        </li>
-                        <li>
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">Next</a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <ul class="pagination pagination-lg">
-                        <li>
-                            <a href="#">Prev</a>
-                        </li>
-                        <li>
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">Next</a>
-                        </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <ul class="pager">
-                        <li>
-                            <a href="#">Prev</a>
-                        </li>
-                        <li>
-                            <a href="#">Next</a>
-                        </li>
-                    </ul>
-                    <!-- /PAGINATION -->
-
-                    <!-- LABEL AND BADGE -->
-                    <h2 class="page-header" id="label-badge">Label and badge</h2>
-
-                    <h3><span class="label label-default">Default</span> <span class="label label-success">Success</span> <span class="label label-warning">Warning</span> <span class="label label-danger">Danger</span> <span class="label label-info">Info</span></h3>
-                    <p class="lead"><a href="#">Inbox <span class="badge">42</span></a></p>
-                    <!-- /LABEL AND BADGE -->
-
-                    <!-- ALERT -->
-                    <h2 class="page-header" id="alert">Alert</h2>
-
-                    <div class="alert alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-                    </div>
-                    <div class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-                    </div>
-                    <div class="alert alert-warning">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-                    </div>
-                    <div class="alert alert-info">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-                    </div>
-                    <div class="alert">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <h4>Warning!</h4>
-                        <p>This is a block style alert.</p>
-                    </div>
-                    <!-- /ALERT -->
-
-                    <!-- PROGRESS BAR -->
-                    <h2 class="page-header" id="progress-bar">Progress bar</h2>
-
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                    </div>
-                    <div class="progress progress-striped active">
-                        <div class="progress-bar progress-bar-success"></div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                    </div>
-                    <!-- /PROGRESS BAR -->
-
-                    <!-- MEDIA -->
-                    <h2 class="page-header" id="media">Media</h2>
-
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64">  </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>This is the content for your media.</p>
-                        </div>
-                    </div>
-                    <!-- /MEDIA -->
-
-                    <!-- LIST GROUP -->
-                    <h2 class="page-header" id="list-group">List group</h2>
-
-                    <ul class="list-group">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">          Cras justo odio        </a><a href="#" class="list-group-item">Dapibus ac facilisis in        </a><a href="#" class="list-group-item">Morbi leo risus        </a><a href="#" class="list-group-item">Porta ac consectetur ac        </a><a href="#" class="list-group-item">Vestibulum at eros        </a>
-                    </div>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">          <h4 class="list-group-item-heading">List group item heading</h4>          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>        </a><a href="#" class="list-group-item">          <h4 class="list-group-item-heading">List group item heading</h4>          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>        </a><a href="#" class="list-group-item">          <h4 class="list-group-item-heading">List group item heading</h4>          <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>        </a>
-                    </div>
-                    <!-- /LIST GROUP -->
-
-                    <!-- PANEL -->
-                    <h2 class="page-header" id="panel">Panel</h2>
-
-                    <div class="panel panel-primary" id="panels">
-                        <div class="panel-heading">This is a header
-                        </div>
-                        <p class="panel-body">This is a panel</p>
-                        <div class="panel-footer">This is a footer
-                        </div>
-                    </div>
-                    <div class="panel panel-success">
-                        <div class="panel-heading">This is a header
-                        </div>
-                        <div class="panel-body">This is a panel</div>
-                        <div class="panel-footer">This is a footer
-                        </div>
-                    </div>
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">This is a header
-                        </div>
-                        <div class="panel-body">This is a panel</div>
-                        <div class="panel-footer">This is a footer
-                        </div>
-                    </div>
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">This is a header
-                        </div>
-                        <div class="panel-body">This is a panel</div>
-                        <div class="panel-footer">This is a footer
-                        </div>
-                    </div>
-                    <div class="panel panel-info">
-                        <div class="panel-heading">This is a header
-                        </div>
-                        <p class="panel-body">This is a panel</p>
-                        <div class="panel-footer">This is a footer
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">This is a header
-                        </div>
-                        <div class="panel-body">This is a panel</div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">First Item</li>
-                            <li class="list-group-item">Second Item</li>
-                            <li class="list-group-item">Third Item</li>
-                        </ul>
-                        <div class="panel-footer">This is a footer
-                        </div>
-                    </div>
-                    <!-- /PANEL -->
-
-                    <!-- WELL -->
-                    <h2 class="page-header" id="well">Well</h2>
-
-                    <div class="well">Default Well
-                    </div>
-                    <div class="well well-sm">Small Well
-                    </div>
-                    <div class="well well-lg">Large Padding Well
-                    </div>
-                    <!-- /WELL -->
-
-                    <!-- TAB -->
-                    <h2 class="page-header" id="tab">Tab</h2>
-
-                    <ul id="myTab" class="nav nav-tabs">
-                        <li class=""><a href="#home" data-toggle="tab">Home</a></li>
-                        <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-                        <li class="dropdown">
-                            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                                <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@fat</a></li>
-                                <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@mdo</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade" id="home">
-                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                        </div>
-                        <div class="tab-pane fade active in" id="profile">
-                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-                        </div>
-                        <div class="tab-pane fade" id="dropdown1">
-                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                        </div>
-                        <div class="tab-pane fade" id="dropdown2">
-                            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-                        </div>
-                    </div>
-                    <!-- /TAB -->
-
-                    <!-- TOOLTIP -->
-                    <h2 class="page-header" id="tooltip">Tooltip</h2>
-
-                    <div class="bs-example-tooltips">
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="" data-original-title="Tooltip on left">Tooltip on left</button>
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Tooltip on top</button>
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
-                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
-                    </div>
-                    <!-- /TOOLTIP -->
-
-                    <!-- POPOVER -->
-                    <h2 class="page-header" id="popover">Popover</h2>
-
-                    <div class="bs-popover-example">
-                        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
-                            Popover on left
-                        </button>
-                        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
-                            Popover on top
-                        </button>
-                        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
-                            Popover on bottom
-                        </button>
-                        <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="">
-                            Popover on right
-                        </button>
-                    </div>
-                    <!-- /POPOVER -->
-
-                    <!-- ACCORDION -->
-                    <h2 class="page-header" id="accordion">Accordion</h2>
-
-                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Collapsible Group Item #1
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingTwo">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Collapsible Group Item #2
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="headingThree">
-                                <h4 class="panel-title">
-                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Collapsible Group Item #3
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /ACCORDION -->
-
-                    <!-- MODAL -->
-                    <h2 class="page-header" id="modal">Modal</h2>
-
-                    <div class="text-center">
-                        <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
-                    </div>
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title">Modal title</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /MODAL -->
-
-                </div>
-                <br>
 
                 <script
                         src="https://code.jquery.com/jquery-3.1.1.min.js"
