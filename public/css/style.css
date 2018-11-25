@@ -216,3 +216,7 @@ footer{
 #initial_reserve{
     display: initial;
 }
+
+.styleGuide {
+    background-color: white;
+}
