@@ -112,7 +112,7 @@
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <div id="username" contentEditable="true">DonorName</div>
+            <div id="username" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">DonorName</div>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
@@ -120,17 +120,17 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <div id="email" contentEditable="true">Click to enter your email</div>
+            <div id="email" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your email</div>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="zipCode">Zip Code</label>
-            <div id="zipCode" contentEditable="true">Click to enter your zip code</div>
+            <div id="zipCode" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your zip code</div>
             <small id="zipCodeHelp" class="form-text text-muted">We'll find safe pick up locations near you based on the zip code.</small>
         </div>
         <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <div id="phoneNumber" contentEditable="true">Click to enter your phone number</div>
+            <div id="phoneNumber" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your phone number</div>
         </div>
         <form id="location">
             <label>Available Pickup Locations</label>
