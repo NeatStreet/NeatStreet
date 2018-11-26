@@ -127,6 +127,20 @@
         req.send();
     }
 
+    function getItem(data) {
+        console.log(data);
+        const category = getUrlVars()['category'];
+        const image = getUrlVars()['image']; 
+        var req = new XMLHttpRequest();
+        req.open('GET', '/api/v1/clothes/' + image);
+        req.responseType = 'json';
+        req.onload = function() {
+        //   console.log(JSON.stringify(this.response));
+        displayItem(this.response);
+        };
+        req.send();
+    }
+
   $(function(){
     // getAllClothes();
     getClothesByCategory();// TODO: 这个估计应该是在你的另一个PAGE叫

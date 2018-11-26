@@ -22,6 +22,16 @@ router.get('/:category', (req, res) => {
     });
 });
 
+router.get('/:image', (req, res) => {
+  const item = req.params.image
+  db.client.query(
+    `SELECT * From clothes WHERE image = '${item}'`,
+    (err, result) => {
+      res.json(result.rows);
+      res.end();
+    });
+});
+
 router.get('/:user', (req, res) => {
   const username = req.params.user;
   db.client.query(
