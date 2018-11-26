@@ -110,41 +110,46 @@
 </style>
 
 <body>
-
-<div class="messages-wrapper">
-    <pre id = "messages-list_two" class=" messages-list pre-scrollable">
-         <ul id="messages" class = "list-group">
-             <li class="message to">Hello Client</li>
-             <li class="message from">Hello Donor, I am interested in your item </li>
-             <li class="message from">You have a very nice collection <br> on your digital wardrobe</li>
-             <li class="message to">Thanks Robin, which item are you interested in?</li>
-             <li class="message from">The Jacket</li>
-             <li class="message to">Okay do you have any questions <br> about the Jacket?</li>
-             <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
-             <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
-         </ul>
-    </pre>
-
+<div class="panel panel-primary">
+    <div class="messages-wrapper">
+        <pre id = "messages-list_two" class=" messages-list pre-scrollable">
+             <ul id="messages" class = "list-group">
+                 <li class="message to">Hello Client</li>
+                 <li class="message from">Hello Donor, I am interested in your item </li>
+                 <li class="message from">You have a very nice collection <br> on your digital wardrobe</li>
+                 <li class="message to">Thanks Robin, which item are you interested in?</li>
+                 <li class="message from">The Jacket</li>
+                 <li class="message to">Okay do you have any questions <br> about the Jacket?</li>
+                 <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
+                 <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
+             </ul>
+        </pre>
+    </div>
+    <br>
+    <div id="postedMessages">
+        <textarea id="txtMessage" class="form-control" placeholder="Message"></textarea>
+    </div>
+    <div class="sendBtn"><button id="send" class="btn btn-primary" style="float: right;" onclick="addChat()">Send</button></div>
 </div>
-
-
-<br>
-<div>
-    <textarea id="txtMessage" class="form-control" placeholder="Message"></textarea>
-    <button id="send" class="btn btn-primary" style="float: right;" onclick="addChat()">Send</button>
-</div>
-
-
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-
-
+  const messages = document.getElementById('messages');
+  function scrollToBottom() {
+    messages.scrollTop = messages.scrollHeight;
+  }
+  $(function(){
+    scrollToBottom();
+  });
   function addChat(){
     var $chatmessages = $('#messages');
     var $txtMessage = $('#txtMessage');
     var txtmsg = $txtMessage.val();
 
     console.log('textmsg ' + $txtMessage.val() + txtmsg);
-
     $chatmessages.append(`<li class="message to list-group-item list-group-item-success"> ${$txtMessage.val()} <br></li>`);
   }
 
