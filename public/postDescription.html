@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+</head>
+
+
+<body>
+
+<div class="nav-container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="nav-home" href="index.html">
+                    NeatStreet
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Available Items <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Women</a></li>
+                            <li><a href="#">Men</a></li>
+                            <li><a href="#">Kids</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="#intro">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <label class="text-muted small text-truncate">Category</label>
+    <div class="dropdown">
+        <button id="dropCate" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">Category
+            <span class="caret"></span>
+            </button>
+            <ul id="dd_cate" class="dropdown-menu">
+                <li><a>Jacket</a></li>
+                <li><a>Shirts</a></li>
+                <li><a>Pants</a></li>
+                <li><a>Shoes</a></li>
+            </ul>
+    </div>
+    <label class="text-muted small text-truncate">Title</label>
+    <input class="form-control" id="inputTitle">
+    <label class="text-muted small text-truncate">Choose photo</label>
+    <form action="/img" enctype="multipart/form-data">
+        <input id="item_pic" name="test" type="file" accept="image/gif, image/jpeg, image/png">
+    </form>
+    <label class="text-muted small text-truncate">Description</label>
+    <textarea class="form-control" id="item_desc" placeholder="Description"></textarea>
+    <label class="text-muted small text-truncate">Gender</label>
+    <div class="dropdown">
+        <button id= "dd_gender" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">Gender
+            <span class="caret"></span>
+            </button>
+            <ul id="ttt" class="dropdown-menu">
+                <li><a>Male</a></li>
+                <li><a>Female</a></li>
+                <li><a>Both</a></li>
+            </ul>
+    </div>
+    <label class="text-muted small text-truncate">Size</label>
+    <div class="dropdown">
+        <button id="dd_btn_size" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">L
+            <span class="caret"></span>
+        </button>
+        <ul id="dd_size" class="dropdown-menu">
+            <li><a>XXL</a></li>
+            <li><a>XL</a></li>
+            <li><a>L</a></li>
+            <li><a>M</a></li>
+            <li><a>S</a></li>
+            <li><a>XS</a></li>
+        </ul>
+    </div>
+    <label class="text-muted small text-truncate">Zip Code</label>
+    <input class="form-control" id="inputZipcode">
+    <button type="button" class="btn btn-primary">Cancel</button>
+    <button type="button" class="btn btn-success" onclick="confirmClick();">Confirm</button>
+</div>
+
+
+
+<footer>
+    <p class="text-center">NeatStreet Copyright &copy; 2018</p>
+</footer>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+    $('#dd_cate').on('click', function(e) {
+        var $target = $(e.target);
+        //alert($target.text());
+        $('#dropCate').text($target.text());
+    });
+    $('#ttt').on('click', function(e) {
+        var $target = $(e.target);
+        //alert($target.text());
+        $('#dd_gender').text($target.text());
+    });
+    
+    $('#dd_size').on('click', function(e) {
+        var $target = $(e.target);
+        //alert($target.text());
+        $('#dd_btn_size').text($target.text());
+    })
+    function confirmClick() {
+        addToDB();
+    }
+
+    function addToDB() {
+        var owner = localStorage.getItem('login');
+        console.log(owner);
+        var name = document.querySelector("#inputTitle").value;
+        console.log(name);
+        var category = $('#dropCate').text()
+        console.log(category);
+        var size = $('#dd_btn_size').text();
+        console.log(size);
+        var location = document.querySelector("#inputZipcode").value;
+        console.log(location);
+        var image = document.querySelector("#item_pic").value;
+        console.log(image);
+        //console.log("here");
+        var req = new XMLHttpRequest();
+        req.open('POST', '/api/v1/clothes');
+        req.setRequestHeader('Content-type', 'application/json');
+        req.responseType = 'json';
+        req.onload = function() {
+            switch(this.response.status) {
+                case 'insert clothes success':
+                    console.log('clothes success');
+                    window.confirm("Post Successfully.");
+                    window.location.href = '/postSuccess.html';
+                    break;
+                default:
+                    console.log('clothes fail');
+            }
+        }
+        //console.log(JSON.stringify({ owner, name, category, size, location, image }));
+        req.send(JSON.stringify({ owner, name, category, size, location, image }));
+    }
+
+  window.sr = ScrollReveal();
+  sr.reveal('.navbar', {
+    duration: 2000,
+    origin:'bottom'
+  });
+  sr.reveal('.showcase-left', {
+    duration: 2000,
+    origin:'top',
+    distance:'300px'
+  });
+  sr.reveal('.showcase-right', {
+    duration: 2000,
+    origin:'right',
+    distance:'300px'
+  });
+  sr.reveal('.showcase-btn', {
+    duration: 2000,
+    delay: 2000,
+    origin:'bottom'
+  });
+  sr.reveal('#testimonial div', {
+    duration: 2000,
+    origin:'bottom'
+  });
+  sr.reveal('.info-left', {
+    duration: 2000,
+    origin:'left',
+    distance:'300px',
+    viewFactor: 0.2
+  });
+  sr.reveal('.info-right', {
+    duration: 2000,
+    origin:'right',
+    distance:'300px',
+    viewFactor: 0.2
+  });
+</script>
+
+
+</body>
+</html>
+

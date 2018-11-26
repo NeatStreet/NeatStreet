@@ -12,7 +12,25 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:user', (req, res) => {
+  const username = req.params.user;
+  db.client.query(
+    `SELECT * From clothes WHERE owner = '${username}'`,
+    (err, result) => {
+      res.json({data: result.rows[0]});
+      res.end();
+    });
+});
+
 router.post('/', (req, res) => {
+	const { owner, name, category, size, location, image } = req.body;
+	db.client.query(
+      `INSERT INTO clothes(owner, name, category, size, location, image) VALUES('${owner}', '${name}', '${category}', 
+      '${size}', '${location}', '${image}');`,
+      () => {
+        res.json({status: 'insert clothes success'});
+        res.end();
+      });
 });
 
 module.exports = router;
