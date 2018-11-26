@@ -47,7 +47,7 @@
     </nav>
 </div>
 
-<div >
+<div class="container">
     <label class="text-muted small text-truncate">Category</label>
     <div class="dropdown">
         <button id="dropCate" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">Category
@@ -135,17 +135,17 @@
     function addToDB() {
         var owner = localStorage.getItem('login');
         console.log(owner);
-        var titleName = document.querySelector("#inputTitle").value;
-        console.log(titleName);
+        var name = document.querySelector("#inputTitle").value;
+        console.log(name);
         var category = $('#dropCate').text()
         console.log(category);
         var size = $('#dd_btn_size').text();
         console.log(size);
         var location = document.querySelector("#inputZipcode").value;
         console.log(location);
-        var imagePath = document.querySelector("#item_pic").value;
-        console.log(imagePath);
-        
+        var image = document.querySelector("#item_pic").value;
+        console.log(image);
+        //console.log("here");
         var req = new XMLHttpRequest();
         req.open('POST', '/api/v1/clothes');
         req.setRequestHeader('Content-type', 'application/json');
@@ -161,7 +161,8 @@
                     console.log('clothes fail');
             }
         }
-        req.send(JSON.stringify({owner, titleName, category, size, location, imagePath }));
+        //console.log(JSON.stringify({ owner, name, category, size, location, image }));
+        req.send(JSON.stringify({ owner, name, category, size, location, image }));
     }
 
   window.sr = ScrollReveal();
