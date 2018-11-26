@@ -134,10 +134,17 @@
         </div>
         <form id="location">
             <label>Available Pickup Locations</label>
-            <label><input type="radio" name="location" value="Carnegie Mellon University"> 0.5 mile - Carnegie Mellon University</label>
-            <label><input type="radio" name="location" value="San Jose Shelter"> 0.6 miles - San Jose Shelter</label>
-            <label><input type="radio" name="location" value="WeHope"> 0.7 miles - WeHope</label>
+
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Choose Location<span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a class="dropdown-item" name="location" href="#" value="Carnegie Mellon University"> 0.5 mile - Carnegie Mellon University</a></li>
+                    <li><a class="dropdown-item" name="location" href="#" value="San Jose Shelter"> 0.6 miles - San Jose Shelter</a></li>
+                    <li><a class="dropdown-item" name="location" href="#" value="WeHope"> 0.7 miles - WeHope</a></li>
+                </ul>
+            </li>
         </form>
+        <br>
         <div align="center">
             <button type="button" class="btn btn-primary" onclick="updateProfile()">Submit</button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
