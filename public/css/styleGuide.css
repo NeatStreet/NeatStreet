@@ -372,5 +372,9 @@ fieldset {
     margin: auto;
 }
 
+.postItem {
+    background-color: white;
+}
+
 
 
