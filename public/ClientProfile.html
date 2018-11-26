@@ -44,7 +44,6 @@
                         </ul>
                     </li>
                     <li><a href="messagesInbox.html"> Messages</a></li>
-                    <li><a href="postedItems.html"> Posted Items</a></li>
                 </ul>
             </div>
         </div>
@@ -110,12 +109,12 @@
 
 </script>
 <div class="client-profile">
-    <h1>Donor Profile</h1>
+    <h1>Client Profile</h1>
     <p><span class="glyphicon glyphicon-pencil"></span>Click text to edit</p>
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <div id="username" contentEditable="true">DonorName</div>
+            <div id="username" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">ClientName</div>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
@@ -123,17 +122,17 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <div id="email" contentEditable="true">Click to enter your email</div>
+            <div id="email" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your email</div>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
             <label for="zipCode">Zip Code</label>
-            <div id="zipCode" contentEditable="true">Click to enter your zip code</div>
+            <div id="zipCode" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your zip code</div>
             <small id="zipCodeHelp" class="form-text text-muted">We'll find safe pick up locations near you based on the zip code.</small>
         </div>
         <div class="form-group">
             <label for="phoneNumber">Phone Number</label>
-            <div id="phoneNumber" contentEditable="true">Click to enter your phone number</div>
+            <div id="phoneNumber" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your phone number</div>
         </div>
         <div class="form-group">
             <label for="exampleSelect2">Available Pickup Locations</label>
