@@ -376,5 +376,9 @@ fieldset {
     background-color: white;
 }
 
+.item-container {
+    margin:15px;
+}
+
 
 
