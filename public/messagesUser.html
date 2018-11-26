@@ -2,17 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" crossorigin="anonymous"></script>
 </head>
 <header>
     <a href="messagesInbox.html"><span class="left">Messages</span></a>
-    <h2>Robin</h2>
+    <h2>Chat with ...</h2>
 </header>
 
 <style>
@@ -22,7 +24,6 @@
         color: #FFFFFF;
         font-family: "Open Sans";
         line-height: 26px;
-        width: 400px;
         margin: 0 auto;
         overflow-X: hidden;
         position: relative;
@@ -77,6 +78,12 @@
         border: 1px solid #ddd;
         border-top: 0 none;
     }
+    .messages-list {
+        padding-top: 10px;
+        position: relative;
+        border: 1px solid #ddd;
+        border-top: 0 none;
+    }
     .message {
         border-radius: 20px 20px 20px 20px;
         margin: 0 15px 10px;
@@ -84,31 +91,62 @@
         position: relative;
     }
     .message.to {
+        word-wrap: break-word;
         background-color: #2095FE;
         color: #fff;
         margin-left: 80px;
+        font-size: 10px;
+        list-style-type: none;
     }
     .message.from {
+        word-wrap: break-word;
         background-color: #E5E4E9;
         color: #363636;
         margin-right: 80px;
+        font-size: 10px;
+        list-style-type: none;
     }
 
 </style>
 
 <body>
+
 <div class="messages-wrapper">
-    <div class="message to">Hello Robin</div>
-    <div class="message from">Hello Donor, I am interested in your item </div>
-    <div class="message from">You have a very nice collection on your digital wardrobe</div>
-    <div class="message to">Thanks Robin, which item are you interested in?</div>
-    <div class="message from">The Jacket</div>
-    <div class="message to">Okay do you have any questions about the Jacket?</div>
-    <div class="message to">Hello, I'd be glad to lend you my jacket. When do you want to pick it up?</div>
+    <pre id = "messages-list_two" class=" messages-list pre-scrollable">
+         <ul id="messages" class = "list-group">
+             <li class="message to">Hello Client</li>
+             <li class="message from">Hello Donor, I am interested in your item </li>
+             <li class="message from">You have a very nice collection <br> on your digital wardrobe</li>
+             <li class="message to">Thanks Robin, which item are you interested in?</li>
+             <li class="message from">The Jacket</li>
+             <li class="message to">Okay do you have any questions <br> about the Jacket?</li>
+             <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
+             <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
+         </ul>
+    </pre>
+
+</div>
+
+
+<br>
+<div>
+    <textarea id="txtMessage" class="form-control" placeholder="Message"></textarea>
+    <button id="send" class="btn btn-primary" style="float: right;" onclick="addChat()">Send</button>
 </div>
 
 
 <script>
+
+
+  function addChat(){
+    var $chatmessages = $('#messages');
+    var $txtMessage = $('#txtMessage');
+    var txtmsg = $txtMessage.val();
+
+    console.log('textmsg ' + $txtMessage.val() + txtmsg);
+
+    $chatmessages.append(`<li class="message to list-group-item list-group-item-success"> ${$txtMessage.val()} <br></li>`);
+  }
 
 </script>
 </body>
