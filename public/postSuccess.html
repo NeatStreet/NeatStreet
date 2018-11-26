@@ -44,17 +44,20 @@
                 </ul>
             </div>
         </div>
+
     </nav>
 </div>
-
-<div >
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="/img/blackjacket.png" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">Title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <button type="button" class="btn-sm btn-success">Mark as Sold</button>
-        <button type="button" class="btn-sm btn-primary">Delete Item</button>
+<div class="container">
+    <div id="cards">
+        <div class="card" style="width: 18rem;">
+            <img id="img" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+            <h5 id="title" class="card-title"></h5>
+            <p id="size" class="card-text">Size: </p>
+            <p id="location" class="card-text">Location: </p>
+            <!-- <button type="button" class="btn-sm btn-success">Mark as Sold</button>
+            <button type="button" class="btn-sm btn-primary">Delete Item</button> -->
+            </div>
         </div>
     </div>
 </div>
@@ -72,10 +75,38 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
-    function confirmClick(){
-        window.confirm("Post Successfully.");
-        window.location.href = '/postSuccess.html';
-    }
+  //var path = require('path');
+  $(function(){
+    loadPostedItem();
+  });
+
+  function loadPostedItem() {
+    var username = localStorage.getItem('login');
+    console.log(username);
+    var req = new XMLHttpRequest();
+    req.open('GET', '/api/v1/clothes/' + username);
+    req.responseType = 'json';
+
+    req.onload = function() {
+      //console.log(this.response);
+      fillItems(this.response);
+    };
+
+    req.send();
+  }
+
+  function fillItems(data) {
+    //console.log(data.data[0].owner);
+    
+    var path = data.data[0].image;
+    var filename = path.substr(path.lastIndexOf('\\') + 1);
+    console.log(filename);
+    document.querySelector("#title").innerHTML = data.data[0].name;
+    document.querySelector("#size").innerHTML += data.data[0].size;
+    document.querySelector("#location").innerHTML += data.data[0].location;
+    document.querySelector("#img").src = "/img/" + filename;
+    
+  }
 
   window.sr = ScrollReveal();
   sr.reveal('.navbar', {
