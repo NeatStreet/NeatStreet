@@ -7,7 +7,17 @@ router.get('/', (req, res) => {
   db.client.query(
     `SELECT * From clothes`,
     (err, result) => {
-      res.json(result.rows[0]);
+      res.json(result.rows);
+      res.end();
+    });
+});
+
+router.get('/:category', (req, res) => {
+  const category = req.params.category;
+  db.client.query(
+    `SELECT * From clothes WHERE category = '${category}'`,
+    (err, result) => {
+      res.json(result.rows);
       res.end();
     });
 });

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    <title>Login</title>
+    <title>Available Items</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -11,10 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
-
-
 <body>
-
 <div class="nav-container">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
@@ -28,6 +25,7 @@
                 <a class="nav-home" href="index.html">
                     NeatStreet
                 </a>
+                <!--<a  class="nav-home" href="postItem.html"> Posted Items</a>-->
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -40,111 +38,59 @@
                         </ul>
                     </li>
                     <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="postedItems.html"> Posted Items</a></li>
+
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-<div class="container">
-    <div id="cards">
-        <div class="card" style="width: 18rem;">
-            <img id="img" class="card-img-top" alt="Card image cap">
-            <div class="card-body">
-            <h5 id="title" class="card-title"></h5>
-            <p id="size" class="card-text">Size: </p>
-            <p id="location" class="card-text">Location: </p>
-            <!-- <button type="button" class="btn-sm btn-success">Mark as Sold</button>
-            <button type="button" class="btn-sm btn-primary">Delete Item</button> -->
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<footer>
-    <p class="text-center">NeatStreet Copyright &copy; 2018</p>
-</footer>
-
 <script
         src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <script>
-  //var path = require('path');
-  $(function(){
-    loadPostedItem();
-  });
-
-  function loadPostedItem() {
-    var username = localStorage.getItem('login');
-    console.log(username);
+  // Load login user's profile
+  function getAllClothes() {
+    console.log('I am here');
     var req = new XMLHttpRequest();
-    req.open('GET', '/api/v1/clothes/' + username);
+    req.open('GET', '/api/v1/clothes');
     req.responseType = 'json';
-
     req.onload = function() {
-      //console.log(this.response);
-      fillItems(this.response);
+      console.log('response' + JSON.stringify(this.response));
+      displayClothes(this.response);
     };
-
     req.send();
   }
 
-  function fillItems(data) {
-    //console.log(data.data[0].owner);
-
-    var path = data.data[0].image;
-    var filename = path.substr(path.lastIndexOf('\\') + 1);
-    console.log(filename);
-    document.querySelector("#title").innerHTML = data.data[0].name;
-    document.querySelector("#size").innerHTML += data.data[0].size;
-    document.querySelector("#location").innerHTML += data.data[0].location;
-    document.querySelector("#img").src = "/img/" + filename;
-
+  function getClothesByCategory() {
+    const category = 'shirts'; // TODO: 改成你的CATEGORY变量
+    var req = new XMLHttpRequest();
+    req.open('GET', '/api/v1/clothes/' + category);
+    req.responseType = 'json';
+    req.onload = function() {
+      console.log(JSON.stringify(this.response));
+      displayClothesByCategory(this.response);
+    };
+    req.send();
   }
 
-  window.sr = ScrollReveal();
-  sr.reveal('.navbar', {
-    duration: 2000,
-    origin:'bottom'
+  $(function(){
+    getAllClothes();
+    getClothesByCategory();// TODO: 这个估计应该是在你的另一个PAGE叫
   });
-  sr.reveal('.showcase-left', {
-    duration: 2000,
-    origin:'top',
-    distance:'300px'
-  });
-  sr.reveal('.showcase-right', {
-    duration: 2000,
-    origin:'right',
-    distance:'300px'
-  });
-  sr.reveal('.showcase-btn', {
-    duration: 2000,
-    delay: 2000,
-    origin:'bottom'
-  });
-  sr.reveal('#testimonial div', {
-    duration: 2000,
-    origin:'bottom'
-  });
-  sr.reveal('.info-left', {
-    duration: 2000,
-    origin:'left',
-    distance:'300px',
-    viewFactor: 0.2
-  });
-  sr.reveal('.info-right', {
-    duration: 2000,
-    origin:'right',
-    distance:'300px',
-    viewFactor: 0.2
-  });
+
+  // TODO : 把提取到的信息放到你的UI里, 现在这是两个profile的例子，你的应该是data[0].category什么的，可以打印出来看下
+  function displayClothes(data) {
+    // document.querySelector("#username").innerHTML = data[0].username;
+    // document.querySelector("#exampleInputPassword1").value = data[0].password;
+  }
+
+  function displayClothesByCategory(data) {
+    // document.querySelector("#username").innerHTML = data[0].username;
+    // document.querySelector("#exampleInputPassword1").value = data[0].password;
+  }
 </script>
-
-
 </body>
 </html>
-
