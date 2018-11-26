@@ -82,7 +82,14 @@
     var username = document.querySelector("#username").innerHTML;
     var password = document.querySelector("#exampleInputPassword1").value;
     var form = document.getElementById("location");
-    console.log(form.elements["location"].value);
+
+    var locationform = document.getElementById("pick_locations");
+    var selected = locationform.addEventListener('click', function (e) {
+      document.getElementById("chosen_loc").innerHTML = e.target.innerText;
+    });
+    console.log('SHOW SELECTION' + selected);
+
+    //console.log(form.elements["location"].value);
     let email = null;
     if ('Click to enter your email' !== document.querySelector("#email").innerHTML) {
       email = document.querySelector("#email").innerHTML;
@@ -136,8 +143,8 @@
             <label>Available Pickup Locations</label>
 
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Choose Location<span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-toggle" id="chosen_loc" data-toggle="dropdown" href="#">Choose Location<span class="caret"></span></a>
+                <ul id = "pick_locations" class="dropdown-menu dropdown-menu-right">
                     <li><a class="dropdown-item" name="location" href="#" value="Carnegie Mellon University"> 0.5 mile - Carnegie Mellon University</a></li>
                     <li><a class="dropdown-item" name="location" href="#" value="San Jose Shelter"> 0.6 miles - San Jose Shelter</a></li>
                     <li><a class="dropdown-item" name="location" href="#" value="WeHope"> 0.7 miles - WeHope</a></li>
