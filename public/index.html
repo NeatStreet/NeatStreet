@@ -226,6 +226,7 @@
     for(var i = 0; i < options.length; i++) {
       if(options[i].checked)
         type = options[i].value;
+      localStorage.setItem('type', type);
     }
     if(username === '' || password === '') {
       alert('Cannot left username/password empty');

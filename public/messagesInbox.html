@@ -30,110 +30,133 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="/category.html">Available Items <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/category.html">All Items</a></li>
-                            <li><a class="dropdown-item" href="/availableItems.html?category=jacket">Jackets</a></li>
-                            <li><a class="dropdown-item" href="/availableItems.html?category=dress">Dresses</a></li>
-                            <li><a class="dropdown-item" href="/availableItems.html?category=suit">Suits</a></li>
-                            <li><a class="dropdown-item" href="/availableItems.html?category=shoe">Shoes</a></li>
-                            <li><a class="dropdown-item" href="/availableItems.html?category=scarf">Scarfs</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="messagesInbox.html"> Messages</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
-<input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
-<div class="container">
-    <div class="panel-primary">
-        <div class="panel-body">
-            <div class="card card-default" id="card_contacts">
-        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
-            <ul class="list-group pull-down" id="contact-list">
-                <li class="list-group-item">
-                    <div class="row w-100">
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
-                            <label class="name lead">Robin</label>
-                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
-                            <br>
-                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
-                            <span class="text-muted small text-truncate">Hello, I'd be glad to lend you my jacket...</span>
-                        </div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script>
+  function appendProfileLink() {
+    let type = '';
+    if(localStorage.getItem('type') === 'Client') {
+      type = "<li class=\"dropdown\">\n" +
+        "                        <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"/category.html\">Available Items <span class=\"caret\"></span></a>\n" +
+        "                        <ul class=\"dropdown-menu\">\n" +
+        "                            <li><a class=\"dropdown-item\" href=\"/category.html\">All Items</a></li>\n" +
+        "                            <li><a class=\"dropdown-item\" href=\"/availableItems.html?category=jacket\">Jackets</a></li>\n" +
+        "                            <li><a class=\"dropdown-item\" href=\"/availableItems.html?category=dress\">Dresses</a></li>\n" +
+        "                            <li><a class=\"dropdown-item\" href=\"/availableItems.html?category=suit\">Suits</a></li>\n" +
+        "                            <li><a class=\"dropdown-item\" href=\"/availableItems.html?category=shoe\">Shoes</a></li>\n" +
+        "                            <li><a class=\"dropdown-item\" href=\"/availableItems.html?category=scarf\">Scarfs</a></li>\n" +
+        "                        </ul>\n" +
+        "                    </li>" +
+        "<li><a href=\"messagesInbox.html\"> Messages</a></li>" +
+        "<li><a href=\"ClientProfile.html\"> Profile</a></li>";
+    } else {
+      type = "<li><a href=\"messagesInbox.html\"> Messages</a></li>" +
+        "<li><a href=\"DonorProfile.html\"> Profile</a></li>" +
+        "<li><a href=\"postDescription.html\"> Post Item</a></li>" +
+        "<li><a href=\"postSuccess.html\"> Posted Items</a></li>";
+    }
+    $( ".navbar-nav" ).append( type );
+  }
+  $(function(){
+    appendProfileLink();
+  });
+</script>
+<div class="msgContainer">
+    <div class="container">
+        <br>
+        <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
+        <div class="panel-primary">
+            <div class="panel-body">
+                <div class="card card-default" id="card_contacts">
+                    <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+                        <ul class="list-group pull-down" id="contact-list">
+                            <li class="list-group-item">
+                                <div class="row w-100">
+                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                        <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                        <label class="name lead">Robin</label>
+                                        <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                                        <br>
+                                        <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                        <span class="text-muted small text-truncate">Hello, I'd be glad to lend you my jacket...</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row w-100">
+                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                        <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                        <label class="name lead">Kelly</label>
+                                        <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                                        <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                        <br>
+                                        <span class="text-muted small text-truncate">What is the correct size of the item listing...</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row w-100">
+                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                        <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                        <label class="name lead">Amy</label>
+                                        <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                                        <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                        <br>
+                                        <span class="text-muted small text-truncate">Will you be able to meet at another location...</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row w-100">
+                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                        <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                        <label class="name lead">Alicia</label>
+                                        <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                                        <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                        <br>
+                                        <span class="text-muted small text-truncate">I'm so glad to hear the shoes fit you well...</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row w-100">
+                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                        <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                        <label class="name lead">Jack</label>
+                                        <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                                        <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                        <br>
+                                        <span class="text-muted small text-truncate">That timing won't work for me, can we reschedule...</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row w-100">
+                                    <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                        <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
+                                        <label class="name lead">Steve</label>
+                                        <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
+                                        <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
+                                        <br>
+                                        <span class="text-muted small text-truncate">Come and visit our shelter anytime you'd like to visit...</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!--/contacts list-->
                     </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row w-100">
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
-                            <label class="name lead">Kelly</label>
-                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
-                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
-                            <br>
-                            <span class="text-muted small text-truncate">What is the correct size of the item listing...</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row w-100">
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
-                            <label class="name lead">Amy</label>
-                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
-                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
-                            <br>
-                            <span class="text-muted small text-truncate">Will you be able to meet at another location...</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row w-100">
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
-                            <label class="name lead">Alicia</label>
-                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
-                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
-                            <br>
-                            <span class="text-muted small text-truncate">I'm so glad to hear the shoes fit you well...</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row w-100">
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
-                            <label class="name lead">Jack</label>
-                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
-                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
-                            <br>
-                            <span class="text-muted small text-truncate">That timing won't work for me, can we reschedule...</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row w-100">
-                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
-                            <span class="fa fa-mobile fa-2x text-success float-right pulse" title="online now"></span>
-                            <label class="name lead">Steve</label>
-                            <button onclick="selectUser();" class="btn btn-default btn-simple btn-round pull-right"> <span class="glyphicon glyphicon-comment"></span></button>
-                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" data-original-title="" title=""></span>
-                            <br>
-                            <span class="text-muted small text-truncate">Come and visit our shelter anytime you'd like to visit...</span>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <!--/contacts list-->
-        </div>
-    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 
 
 <footer>
@@ -147,9 +170,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
-    function selectUser(){
-      window.location.href = '/messagesUser.html';
-    }
+  function selectUser(){
+    window.location.href = '/messagesUser.html';
+  }
 
   window.sr = ScrollReveal();
   sr.reveal('.navbar', {

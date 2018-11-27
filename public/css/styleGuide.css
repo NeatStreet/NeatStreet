@@ -395,4 +395,8 @@ fieldset {
     height: 100%;
 }
 
+.msgContainer {
+    background-color: white;
+    height: 100%;
+}
 

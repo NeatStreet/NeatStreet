@@ -48,7 +48,6 @@ router.delete('/', (req, res) => {
   db.client.query(
     `DELETE FROM clothes WHERE name = '${name}' AND owner = '${owner}';`,
     () => {
-      console.log(err);
       res.json({status: 'delete clothes success'});
       res.end();
     });
