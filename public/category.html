@@ -54,20 +54,53 @@
 <div class="container gallery-container">
     <div class="tz-gallery">
         <div class="row" id="content-row">
+            <div class="col-sm-6 col-md-4 item-container">
+                <a class="lightbox" href="/availableItems.html?category=jacket">
+                    <img src="https://i.ebayimg.com/images/g/sLQAAOSwMqBagyw7/s-l1600.jpg" alt="Tunnel">
+                </a>
+                <div class="caption">
+                    <h3 id="display-name">All Jackets</h3>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 item-container">
+                <a class="lightbox" href="/availableItems.html?category=dress">
+                    <img src="https://i.ebayimg.com/images/g/hrQAAOSwry1aOH2I/s-l1600.jpg" alt="Tunnel">
+                </a>
+                <div class="caption">
+                    <h3 id="display-name">All Dresses</h3>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 item-container">
+                <a class="lightbox" href="/availableItems.html?category=suit">
+                    <img src="https://i.ebayimg.com/images/g/sqAAAOSwE95b5gkq/s-l1600.jpg" alt="Tunnel">
+                </a>
+                <div class="caption">
+                    <h3 id="display-name">All Suits</h3>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 item-container">
+                <a class="lightbox" href="/availableItems.html?category=shoe">
+                    <img src="https://i.ebayimg.com/images/g/zcQAAOSwXEdagx8G/s-l1600.jpg" alt="Tunnel">
+                </a>
+                <div class="caption">
+                    <h3 id="display-name">All Shoes</h3>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 item-container">
+                <a class="lightbox" href="/availableItems.html?category=scarf">
+                    <img src="https://i.ebayimg.com/images/g/mTwAAOSwbVNbSR5c/s-l1600.jpg" alt="Tunnel">
+                </a>
+                <div class="caption">
+                    <h3 id="display-name">All Scarfs</h3>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 
-<div class="hidden" id='hidden'>
-    <div class="col-sm-6 col-md-4 item-container">
-        <a class="lightbox" href="#" id="linked-item">
-            <img src="../img/emptyitem.png" alt="Tunnel" id="display-img">
-        </a>
-        <div class="caption">
-            <h3 id="display-name">Item without a name</h3>
-        </div>
-    </div>
-</div>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 <script>
@@ -113,7 +146,7 @@
     }
 
     function getClothesByCategory() {
-        const category = getUrlVars()['category'];
+        const category = getUrlVars()['category']; // TODO: 改成你的CATEGORY变量
         var req = new XMLHttpRequest();
         req.open('GET', '/api/v1/clothes/' + category);
         req.responseType = 'json';
@@ -126,9 +159,10 @@
 
   $(function(){
     // getAllClothes();
-    getClothesByCategory();
+    getClothesByCategory();// TODO: 这个估计应该是在你的另一个PAGE叫
   });
 
+  // TODO : 把提取到的信息放到你的UI里, 现在这是两个profile的例子，你的应该是data[0].category什么的，可以打印出来看下
   function displayClothes(data) {
       console.log(data);
       for (i = 0; i < data.length; i++) {

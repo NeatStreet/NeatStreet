@@ -43,4 +43,15 @@ router.post('/', (req, res) => {
       });
 });
 
+router.delete('/', (req, res) => {
+  const { name, owner } = req.body;
+  db.client.query(
+    `DELETE FROM clothes WHERE name = '${name}' AND owner = '${owner}';`,
+    () => {
+      console.log(err);
+      res.json({status: 'delete clothes success'});
+      res.end();
+    });
+});
+
 module.exports = router;
