@@ -106,7 +106,8 @@
     if ('Click to enter your phone number' !== document.querySelector("#phoneNumber").innerHTML) {
       phone = document.querySelector("#phoneNumber").innerHTML;
     }
-    if(emailContent === defaultMsg || zipCodeContent === defaultMsg || phoneContent === defaultMsg)
+    if(emailContent === defaultMsg || zipCodeContent === defaultMsg || phoneContent === defaultMsg
+    || emailContent === '' || zipCodeContent === '' || phoneContent === '')
     {
       alert('Please fill out all the information')
     } else {
