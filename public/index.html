@@ -229,40 +229,40 @@
     }
     if(username === '' || password === '') {
       alert('Cannot left username/password empty');
-    }
-
-    var req = new XMLHttpRequest();
-    req.open('POST', '/api/v1/user');
-    req.setRequestHeader('Content-type', 'application/json');
-    req.responseType = 'json';
-    req.onload = function() {
-      switch(this.response.status){
-        case 'wrong password':
-          alert('wrong password!');
-          console.log('wrong password');
-          break;
-        case 'login success':
-          console.log('login success');
-          if(type==='Donor') {
-            localStorage.setItem('login', username);
-            window.location.href = '/DonorProfile.html';
-          } else if(type==='Client') {
-            localStorage.setItem('login', username);
-            window.location.href = '/ClientProfile.html';
-          }
-          break;
-        case 'register success':
-          if(type==='Donor') {
-            localStorage.setItem('login', username);
-            window.location.href = '/DonorProfile.html';
-          } else if(type==='Client') {
-            localStorage.setItem('login', username);
-            window.location.href = '/ClientProfile.html';
-          }
-          break;
+    } else {
+      var req = new XMLHttpRequest();
+      req.open('POST', '/api/v1/user');
+      req.setRequestHeader('Content-type', 'application/json');
+      req.responseType = 'json';
+      req.onload = function() {
+        switch(this.response.status){
+          case 'wrong password':
+            alert('wrong password!');
+            console.log('wrong password');
+            break;
+          case 'login success':
+            console.log('login success');
+            if(type==='Donor') {
+              localStorage.setItem('login', username);
+              window.location.href = '/DonorProfile.html';
+            } else if(type==='Client') {
+              localStorage.setItem('login', username);
+              window.location.href = '/ClientProfile.html';
+            }
+            break;
+          case 'register success':
+            if(type==='Donor') {
+              localStorage.setItem('login', username);
+              window.location.href = '/DonorProfile.html';
+            } else if(type==='Client') {
+              localStorage.setItem('login', username);
+              window.location.href = '/ClientProfile.html';
+            }
+            break;
+        }
       }
+      req.send(JSON.stringify({username, password, type }));
     }
-    req.send(JSON.stringify({username, password, type }));
   }
 
 
