@@ -44,29 +44,31 @@
                             </ul>
                         </li>
                         <li><a href="messagesInbox.html"> Messages</a></li>
+                        <li><a href="DonorProfile.html"> Profile</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </div>
 </div>
-<div>
+<div class="postSuccess">
+    <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-body">
                 <div id="cards">
-            <div class="card" style="width: 18rem;">
-                <img id="img" src='./img/blackjacket.png' alt="Card image cap" class="img-responsive center-block">
-                <div class="card-body">
-                    <h5 id="title" class="card-title">Title: </h5>
-                    <p id="size" class="card-text">Size: </p>
-                    <div id='btnSold'>
-                        <button type="button" class="btn-sm btn-primary"  onclick="alertSold()">Mark as Sold</button>
+                    <div class="card" style="width: 18rem;">
+                        <img id="img" src='./img/blackjacket.png' alt="Card image cap" class="img-responsive center-block">
+                        <div class="card-body">
+                            <h5 id="title" class="card-title">Title: </h5>
+                            <p id="size" class="card-text">Size: </p>
+                            <div id='btnSold'>
+                                <button type="button" class="btn-sm btn-primary"  onclick="alertSold()">Mark as Sold</button>
+                            </div>
+                            <!--<button type="button" class="btn-sm btn-primary">Delete Item</button>-->
+                        </div>
                     </div>
-                    <!--<button type="button" class="btn-sm btn-primary">Delete Item</button>-->
                 </div>
-            </div>
-        </div>
             </div>
         </div>
     </div>

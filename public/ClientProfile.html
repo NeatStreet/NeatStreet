@@ -43,6 +43,7 @@
                         </ul>
                     </li>
                     <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="ClientProfile.html"> Profile</a></li>
                 </ul>
             </div>
         </div>
@@ -80,11 +81,22 @@
     else document.querySelector("#phoneNumber").innerHTML = 'Click to enter your phone number';
   }
 
+  function displayAlert() {
+    var x = document.getElementById("submitAlert");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
+  }
+
   function updateProfile() {
-    console.log('I am here');
     var username = document.querySelector("#username").innerHTML;
     var password = document.querySelector("#exampleInputPassword1").value;
     let email = null;
+    const defaultMsg = 'Click to enter your email';
+    const emailContent = document.querySelector("#email").innerHTML;
+    const zipCodeContent = document.querySelector("#zipCode").innerHTML;
+    const phoneContent = document.querySelector("#phoneNumber").innerHTML;
+
     if ('Click to enter your email' !== document.querySelector("#email").innerHTML) {
       email = document.querySelector("#email").innerHTML;
     }
@@ -96,20 +108,34 @@
     if ('Click to enter your phone number' !== document.querySelector("#phoneNumber").innerHTML) {
       phone = document.querySelector("#phoneNumber").innerHTML;
     }
-    var req = new XMLHttpRequest();
-    req.open('PUT', '/api/v1/user');
-    req.setRequestHeader('Content-type', 'application/json');
-    req.responseType = 'json';
-    req.onload = function() {
-      console.log(this.response);
+    if(emailContent === defaultMsg || zipCodeContent === defaultMsg || phoneContent === defaultMsg)
+    {
+      alert('Please fill out all the information')
+    } else {
+      var req = new XMLHttpRequest();
+      req.open('PUT', '/api/v1/user');
+      req.setRequestHeader('Content-type', 'application/json');
+      req.responseType = 'json';
+      req.onload = function() {
+        console.log(this.response);
+      };
+      req.send(JSON.stringify({username, password, email, zipCode, phone }));
+      displayAlert();
     }
-    req.send(JSON.stringify({username, password, email, zipCode, phone }));
   }
 
 </script>
 <div class="client-profile">
+    <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
     <h1>Client Profile</h1>
     <p><span class="glyphicon glyphicon-pencil"></span>Click text to edit</p>
+    <div id="submitAlert" style="display:none;">
+        <div class="alert alert-success alert-dismissible" role="alert" auto-close="1000">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button>
+            Submit Success
+        </div>
+    </div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>

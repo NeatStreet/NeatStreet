@@ -373,6 +373,7 @@ fieldset {
 }
 
 .postItem {
+    height: 100%;
     background-color: white;
 }
 
@@ -389,5 +390,9 @@ fieldset {
     align-content: center;
 }
 
+.postSuccess {
+    background-color: white;
+    height: 100%;
+}
 
 
