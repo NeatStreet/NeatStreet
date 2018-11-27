@@ -112,7 +112,7 @@
 <body>
 <div class="panel panel-primary">
     <div class="messages-wrapper">
-        <pre id = "messages-list_two" class=" messages-list pre-scrollable">
+        <div id = "messages-list" class=" messages-list pre-scrollable">
              <ul id="messages" class = "list-group">
                  <li class="message to">Hello Client</li>
                  <li class="message from">Hello Donor, I am interested in your item </li>
@@ -120,10 +120,9 @@
                  <li class="message to">Thanks Robin, which item are you interested in?</li>
                  <li class="message from">The Jacket</li>
                  <li class="message to">Okay do you have any questions <br> about the Jacket?</li>
-                 <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
-                 <li class="message to">Hello, I'd be glad to lend you my jacket. <br> When do you want to pick it up?</li>
+                 <li class="message to">Hello, I'd be glad to lend you my jacket<br>When do you want to pick it up?</li>
              </ul>
-        </pre>
+        </div>
     </div>
     <br>
     <div id="postedMessages">
@@ -151,6 +150,8 @@
 
     console.log('textmsg ' + $txtMessage.val() + txtmsg);
     $chatmessages.append(`<li class="message to list-group-item list-group-item-success"> ${$txtMessage.val()} <br></li>`);
+    $('#messages-list').scrollTop(100000);
+
   }
 
 </script>
