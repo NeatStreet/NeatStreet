@@ -27,7 +27,7 @@ router.get('/owner/:user', (req, res) => {
   db.client.query(
     `SELECT * From clothes WHERE owner = '${username}'`,
     (err, result) => {
-      res.json({data: result.rows[0]});
+      res.json({data: result.rows});
       res.end();
     });
 });

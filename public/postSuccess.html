@@ -47,19 +47,19 @@
     <div class="container">
         <div class="panel panel-primary">
             <div class="panel-body">
-                <div id="cards">
-                    <div class="card" style="width: 18rem;">
-                        <img id="img" alt="Card image cap" class="img-responsive center-block">
+                <!-- <div id="cards">
+                    <div class="card1" style="width: 18rem;">
+                        <img id="img1" alt="Card image cap" class="img-responsive center-block">
                         <div class="card-body">
-                            <h5 id="title" class="card-title">Title: </h5>
-                            <p id="size" class="card-text">Size: </p>
-                            <div id='btnSold'>
+                            <h5 id="title1" class="card-title">Title: </h5>
+                            <p id="size1" class="card-text">Size: </p>
+                            <div id='btnSold1'>
                                 <button type="button" class="btn-sm btn-primary"  onclick="alertSold()">Mark as Sold</button>
                             </div>
-                            <!--<button type="button" class="btn-sm btn-primary">Delete Item</button>-->
                         </div>
                     </div>
-                </div>
+                  </div> -->
+                  
             </div>
         </div>
     </div>
@@ -99,16 +99,36 @@
   }
 
   function fillItems(data) {
-    console.log(data.data);
+    console.log(data.data.length);
+    for (i = 0; i < data.data.length; i ++) {
+      //console.log(data.data[i]);
+      var path = data.data[i].image;
+    // console.log(path);
+      var filename = path.substr(path.lastIndexOf('\\') + 1);
+      var html = "";
+      html = "<div id='cards'>" + 
+            "<div class='card1' style='width: 18rem;'>\n" + 
+            "<img id='img1' src=./img/" + filename + " alt='Card image cap' class='img-responsive center-block'>" + 
+            "<div class='card-body'>" + 
+            "<h5 id='title1' class='card-title'>" + "Title:" + data.data[i].name + "</h5>" + 
+            "<p id='size1' class='card-text'>" + "Size:" +  data.data[i].size + "</p>" +
+            "<div id='btnSold1'>" +
+            "<button type='button' class='btn-sm btn-primary'  onclick='alertSold()'>" + "Mark as Sold" + "</button>" +
+            "</div>" + 
+            "</div>";
 
-    var path = data.data.image;
-    console.log(path);
-    var filename = path.substr(path.lastIndexOf('\\') + 1);
-    console.log(filename);
-    document.querySelector("#title").innerHTML = data.data.name;
-    document.querySelector("#size").innerHTML += data.data.size;
-    //document.querySelector("#location").innerHTML += data.data.location;
-    document.querySelector("#img").src = "./img/" + filename;
+      $(".panel-body").append(html);
+    }
+    
+
+    // var path = data.data[0].image;
+    // console.log(path);
+    // var filename = path.substr(path.lastIndexOf('\\') + 1);
+    // console.log(filename);
+    // document.querySelector("#title1").innerHTML = data.data[0].name;
+    // document.querySelector("#size1").innerHTML += data.data[0].size;
+    // //document.querySelector("#location").innerHTML += data.data.location;
+    // document.querySelector("#img1").src = "./img/" + filename;
 
   }
 
