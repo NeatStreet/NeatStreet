@@ -49,7 +49,7 @@
             <div class="panel-body">
                 <div id="cards">
                     <div class="card" style="width: 18rem;">
-                        <img id="img" src='./img/blackjacket.png' alt="Card image cap" class="img-responsive center-block">
+                        <img id="img" alt="Card image cap" class="img-responsive center-block">
                         <div class="card-body">
                             <h5 id="title" class="card-title">Title: </h5>
                             <p id="size" class="card-text">Size: </p>
@@ -87,11 +87,11 @@
     var username = localStorage.getItem('login');
     console.log(username);
     var req = new XMLHttpRequest();
-    req.open('GET', '/api/v1/clothes/' + username);
+    req.open('GET', '/api/v1/clothes/owner/' + username);
     req.responseType = 'json';
 
     req.onload = function() {
-      //console.log(this.response);
+      console.log(this.response);
       fillItems(this.response);
     };
 
@@ -99,15 +99,16 @@
   }
 
   function fillItems(data) {
-    //console.log(data.data[0].owner);
+    console.log(data.data);
 
-    var path = data.data[0].image;
+    var path = data.data.image;
+    console.log(path);
     var filename = path.substr(path.lastIndexOf('\\') + 1);
     console.log(filename);
-    document.querySelector("#title").innerHTML = data.data[0].name;
-    document.querySelector("#size").innerHTML += data.data[0].size;
-    document.querySelector("#location").innerHTML += data.data[0].location;
-    document.querySelector("#img").src = "/img/" + filename;
+    document.querySelector("#title").innerHTML = data.data.name;
+    document.querySelector("#size").innerHTML += data.data.size;
+    //document.querySelector("#location").innerHTML += data.data.location;
+    document.querySelector("#img").src = "./img/" + filename;
 
   }
 

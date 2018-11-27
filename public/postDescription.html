@@ -75,7 +75,7 @@
         </div>
         <label class="text-muted small text-truncate">Size</label>
         <div class="dropdown">
-            <button id="dd_btn_size" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">L
+            <button id="dd_btn_size" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">Size
                 <span class="caret"></span>
             </button>
             <ul id="dd_size" class="dropdown-menu">
@@ -131,7 +131,7 @@
     console.log(owner);
     var name = document.querySelector("#inputTitle").value;
     console.log(name);
-    var category = $('#dropCate').text()
+    var category = $('#dropCate').text();
     console.log(category);
     var size = $('#dd_btn_size').text();
     console.log(size);
@@ -139,7 +139,10 @@
     console.log(location);
     var image = document.querySelector("#item_pic").value;
     console.log(image);
-    //console.log("here");
+    if (name == "" || category === "Category" || size === "Size" || location == "" || image == "") {
+        window.confirm("Please fill all fields.");
+        return;
+    }
     var req = new XMLHttpRequest();
     req.open('POST', '/api/v1/clothes');
     req.setRequestHeader('Content-type', 'application/json');

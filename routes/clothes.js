@@ -22,7 +22,7 @@ router.get('/:category', (req, res) => {
     });
 });
 
-router.get('/:user', (req, res) => {
+router.get('/owner/:user', (req, res) => {
   const username = req.params.user;
   db.client.query(
     `SELECT * From clothes WHERE owner = '${username}'`,
