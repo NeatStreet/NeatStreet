@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>Available Items</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="css/fluid-gallery.css">
+    <link rel="stylesheet" href="css/thumbnail-gallery.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+</head>
+
+<body>
+<div class="nav-container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="nav-home" href="index.html">
+                    NeatStreet
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/category.html">Available Items <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/category.html">All Items</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=jacket">Jackets</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=dress">Dresses</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=suit">Suits</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=shoe">Shoes</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=scarf">Scarfs</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="ClientProfile.html"> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
+<div class="container gallery-container">
+    <div class="tz-gallery">
+        <div style="margin: 0 auto; border: 2px; border-style: solid; border-color: black; max-width: 840px;" class="row" id="content-row">
+        </div>
+    </div>
+</div>
+
+<div class="hidden" id='hidden'>
+    <div class="col-sm-4 col-md-4 item-container">
+        <a class="lightbox" href="#" id="linked-item">
+            <img src="../img/emptyitem.png" alt="Tunnel" id="display-img">
+        </a>
+        <div class="caption">
+            <h3 id="display-name">Item without a name</h3>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    var itemTemplate = ' \
+    <div class="col-sm-4 item-container"> \
+            <a id="linked-item"> \
+                <img style="max-width: 300px; min-width: 200px;" src="<DISPLAY-IMG>" alt="Tunnel" id="display-img"> \
+            </a> \
+    </div>\
+    <div class="col-sm-6" style="text-align: right"> \
+        <h3 id="display-name"><DISPLAY_NAME></h3> \
+            <div style="padding-top: 20px;">\
+            <a href="<LINKED-ITEM>"><button><i class="material-icons">shopping_cart</i>REQUEST ITEM</button></a><br><br>\
+            <a href="messagesUser.html"><button><i class="material-icons">message</i>MESSAGE OWNER</button></a>\
+            </div>\
+    </div> \
+    '
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+    // Load login user's profile
+    function getAllClothes() {
+        var req = new XMLHttpRequest();
+        req.open('GET', '/api/v1/clothes');
+        req.responseType = 'json';
+        req.onload = function() {
+        //   console.log('response' + JSON.stringify(this.response));
+        displayClothes(this.response);
+        };
+        req.send();
+    }
+
+    function getItem() {
+        const item = getUrlVars()['name'];
+        var req = new XMLHttpRequest();
+        console.log("item" + item)
+        req.open('GET', '/api/v1/clothes/items/' + item);
+        req.responseType = 'json';
+        req.onload = function() {
+           console.log(this.response);
+        displayClothes(this.response);
+        };
+        req.send();
+    }
+
+  $(function(){
+    // getAllClothes();
+    getItem();
+  });
+
+  function displayClothes(data) {
+      console.log(data);
+      for (i = 0; i < data.length; i++) {
+            var item = data[i];
+            if (item.name === undefined || item.name === "") continue;
+            if (item.image === undefined || item.image === "") continue;
+            displayImg = "../img/emptyitem.png";// TODO: change this to Cam's url
+            var linkedItem = "request-item.html?name="+item.name; 
+            var displayImg = item.image;
+            var filledIn = itemTemplate
+            .replace(/<LINKED-ITEM>/g, linkedItem)
+                .replace(/<DISPLAY-IMG>/g, displayImg)
+                .replace(/<DISPLAY_NAME>/g, item.name);
+            $("#content-row").append(filledIn);
+      }
+  }
+</script>
+</body>
+</html>

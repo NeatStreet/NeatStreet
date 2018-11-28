@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <title>Available Items</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="css/fluid-gallery.css">
+    <link rel="stylesheet" href="css/thumbnail-gallery.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" media="screen"
+       href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+   
+</head>
+
+<body>
+<div class="nav-container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="nav-home" href="index.html">
+                    NeatStreet
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/category.html">Available Items <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/category.html">All Items</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=jacket">Jackets</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=dress">Dresses</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=suit">Suits</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=shoe">Shoes</a></li>
+                            <li><a class="dropdown-item" href="/availableItems.html?category=scarf">Scarfs</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="messagesInbox.html"> Messages</a></li>
+                    <li><a href="ClientProfile.html"> Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
+<div class="container gallery-container">
+    <h3>REQUESTING ITEM</h3>
+    <div class="tz-gallery">
+        <div style="margin: 0 auto; border: 2px; border-style: solid; border-color: black; max-width: 840px;" class="row" id="content-row">
+        </div>
+    </div>
+</div>
+<div class="well">
+        <div id="datetimepicker2" class="input-append">
+          <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text"></input>
+          <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+            </i>
+          </span>
+        </div>
+      </div>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+    
+<script type="text/javascript">
+    $(function() {
+      $('#datetimepicker2').datetimepicker({
+        language: 'en',
+        pick12HourFormat: true
+      });
+    });
+  </script>
+<script>
+    var itemTemplate = ' \
+        <div class="col-sm-4 item-container"> \
+                <a class="lightbox" href="<LINKED-ITEM>" id="linked-item"> \
+                    <img style="max-width: 300px; min-width: 200px;" src="<DISPLAY-IMG>" alt="Tunnel" id="display-img"> \
+                </a> \
+        </div>\
+        <div class="col-sm-6" style="text-align: right"> \
+            <h3 id="display-name"><DISPLAY_NAME></h3> \
+                <div style="padding-top: 20px;">\
+                </div>\
+        </div> \
+        '
+
+    function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars;
+    }
+
+    // Load login user's profile
+    function getAllClothes() {
+        var req = new XMLHttpRequest();
+        req.open('GET', '/api/v1/clothes');
+        req.responseType = 'json';
+        req.onload = function() {
+        //   console.log('response' + JSON.stringify(this.response));
+        displayClothes(this.response);
+        };
+        req.send();
+    }
+
+    function getItem() {
+        const item = getUrlVars()['name'];
+        var req = new XMLHttpRequest();
+        console.log("item" + item)
+        req.open('GET', '/api/v1/clothes/items/' + item);
+        req.responseType = 'json';
+        req.onload = function() {
+           console.log(this.response);
+           
+        displayClothes(this.response);
+        };
+        req.send();
+    }
+
+  $(function(){
+    // getAllClothes();
+    getItem();
+  });
+
+  function displayClothes(data) {
+            var item = data;
+            displayImg = "../img/emptyitem.png";
+            var linkedItem = item.image; // TODO: change this to Cam's url
+            var displayImg = item.image;
+            var filledIn = itemTemplate
+                .replace(/<LINKED-ITEM>/g, linkedItem)
+                .replace(/<DISPLAY-IMG>/g, displayImg)
+                .replace(/<DISPLAY_NAME>/g, item.name);
+            $("#content-row").append(filledIn);
+  }
+</script>
+</body>
+</html>
