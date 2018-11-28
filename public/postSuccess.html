@@ -43,8 +43,12 @@
     </div>
 </div>
 <div class="postSuccess">
+    <br>
     <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
     <div class="container">
+        <div class="alert alert-success alert-dismissible" role="alert" auto-close="1000">
+            Sorry, Image uploading is not available at this time. Coming soon!
+        </div>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <!-- <div id="cards">
@@ -59,7 +63,6 @@
                         </div>
                     </div>
                   </div> -->
-                  
             </div>
         </div>
     </div>
@@ -98,28 +101,44 @@
     req.send();
   }
 
+  function deleteItems(name) {
+    //console.log(data.data[0].owner);
+    var owner = localStorage.getItem('login');
+    var req = new XMLHttpRequest();
+    req.open('DELETE', '/api/v1/clothes/' + owner + '/' + name);
+    req.responseType = 'json';
+
+    req.onload = function() {
+      $(".panel-body").empty();
+      loadPostedItem();
+    };
+    req.send(JSON.stringify({name, owner}));
+  }
+  function alertSold (name) {
+    deleteItems(name);
+    alert( 'Item has been marked as sold');
+  }
   function fillItems(data) {
     console.log(data.data.length);
     for (i = 0; i < data.data.length; i ++) {
-      //console.log(data.data[i]);
+      localStorage.setItem('name', data.data[i].name);
       var path = data.data[i].image;
-    // console.log(path);
+      // console.log(path);
       var filename = path.substr(path.lastIndexOf('\\') + 1);
       var html = "";
-      html = "<div id='cards'>" + 
-            "<div class='card1' style='width: 18rem;'>\n" + 
-            "<img id='img1' src=./img/" + filename + " alt='Card image cap' class='img-responsive center-block'>" + 
-            "<div class='card-body'>" + 
-            "<h5 id='title1' class='card-title'>" + "Title:" + data.data[i].name + "</h5>" + 
+      html = "<div id='cards'>" +
+            "<div class='card1' style='width: 18rem;'>\n" +
+            "<img id='img1' src=./img/" + filename + " alt='Card image cap' class='img-responsive center-block'>" +
+            "<div class='card-body'>" +
+            "<h5 id='title1' class='card-title'>" + "Title:" + data.data[i].name + "</h5>" +
             "<p id='size1' class='card-text'>" + "Size:" +  data.data[i].size + "</p>" +
             "<div id='btnSold1'>" +
-            "<button type='button' class='btn-sm btn-primary'  onclick='alertSold()'>" + "Mark as Sold" + "</button>" +
-            "</div>" + 
+            "<button type='button' class='btn-sm btn-primary' onclick=alertSold(localStorage.getItem('name'))>" + "Mark as Sold" + "</button>" +
+            "</div>" +
             "</div>";
-
       $(".panel-body").append(html);
     }
-    
+
 
     // var path = data.data[0].image;
     // console.log(path);
@@ -130,23 +149,6 @@
     // //document.querySelector("#location").innerHTML += data.data.location;
     // document.querySelector("#img1").src = "./img/" + filename;
 
-  }
-
-  function deleteItems(data) {
-    //console.log(data.data[0].owner);
-    var owner = localStorage.getItem('login');
-    var req = new XMLHttpRequest();
-    req.open('DELETE', '/api/v1/clothes');
-    req.responseType = 'json';
-
-    req.onload = function() {
-      loadPostedItem();
-    };
-    req.send(JSON.stringify({name, owner}));
-  }
-  function alertSold () {
-    alert('Item has been marked as sold');
-    document.querySelector("#btnSold").innerHTML = '';
   }
 
   window.sr = ScrollReveal();

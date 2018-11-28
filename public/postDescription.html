@@ -40,6 +40,7 @@
     </nav>
 </div>
 <div class="postItem">
+    <br>
     <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
     <div class="container">
         <label class="text-muted small text-truncate">Category</label>
@@ -87,10 +88,14 @@
                 <li><a>XS</a></li>
             </ul>
         </div>
-        <label class="text-muted small text-truncate">Zip Code</label>
-        <input class="form-control" id="inputZipcode">
-        <button type="button" class="btn btn-primary">Cancel</button>
-        <button type="button" class="btn btn-success" onclick="confirmClick();">Confirm</button>
+        <!--<label class="text-muted small text-truncate">Zip Code</label>-->
+        <!--<input class="form-control" id="inputZipcode">-->
+        <br>
+        <div align="center">
+            <button type="button" class="btn btn-primary" onclick="window.history.go(-1); return false;">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-success" onclick="confirmClick();">Confirm</button>
+        </div>
+        <br>
     </div>
 </div>
 
@@ -135,11 +140,12 @@
     console.log(category);
     var size = $('#dd_btn_size').text();
     console.log(size);
-    var location = document.querySelector("#inputZipcode").value;
+    // var location = document.querySelector("#inputZipcode").value;
+    var location = '';
     console.log(location);
     var image = document.querySelector("#item_pic").value;
     console.log(image);
-    if (name == "" || category === "Category" || size === "Size" || location == "" || image == "") {
+    if (name == "" || category === "Category" || size === "Size" || image == "") {
         window.confirm("Please fill all fields.");
         return;
     }
