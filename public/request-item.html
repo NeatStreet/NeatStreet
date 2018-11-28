@@ -20,7 +20,7 @@
       <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
       <link rel="stylesheet" type="text/css" media="screen"
        href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
-   
+
 </head>
 
 <body>
@@ -83,7 +83,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript"
      src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-    </script> 
+    </script>
     <script type="text/javascript"
      src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
     </script>
@@ -93,7 +93,7 @@
     <script type="text/javascript"
      src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
     </script>
-    
+
 <script type="text/javascript">
     $(function() {
       $('#datetimepicker2').datetimepicker({
@@ -139,12 +139,12 @@
     function getItem() {
         const item = getUrlVars()['name'];
         var req = new XMLHttpRequest();
-        console.log("item" + item)
+        console.log("item" + item);
         req.open('GET', '/api/v1/clothes/items/' + item);
         req.responseType = 'json';
         req.onload = function() {
            console.log(this.response);
-           
+
         displayClothes(this.response);
         };
         req.send();
