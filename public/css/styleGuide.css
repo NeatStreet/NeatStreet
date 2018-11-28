@@ -400,3 +400,8 @@ fieldset {
     height: 100%;
 }
 
+.intoTabs {
+    display: inline-block;
+    font-size: 2px;
+}
+

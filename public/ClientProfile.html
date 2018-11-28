@@ -131,7 +131,8 @@
         <div class="alert alert-success alert-dismissible" role="alert" auto-close="1000">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
             </button>
-            Submit Success
+            Submit Success &nbsp;
+            <button type="button" class="btn btn-primary" onclick="location.href = 'category.html';"> Available Items</button>
         </div>
     </div>
     <form>
@@ -157,15 +158,22 @@
             <label for="phoneNumber">Phone Number</label>
             <div id="phoneNumber" contentEditable="true" onclick="document.execCommand('selectAll',false,null)">Click to enter your phone number</div>
         </div>
-        <div class="form-group">
-            <label for="exampleSelect2">Available Pickup Locations</label>
-            <select multiple class="form-control" id="exampleSelect2">
-                <option>0.5 mile - Carnegie Mellon University</option>
-                <option>0.6 miles - San Jose Shelter</option>
-                <option>0.7 miles - WeHope</option>
-                <option>0.8 miles - LifeMove</option>
-            </select>
+        <div class="btn-group dropup">
+            <label>Available Pickup Locations</label>
+            <div class="alert alert-success alert-dismissible" role="alert" auto-close="1000">
+                Location Suggestion Coming soon!
+            </div>
+            <li class="dropdown">
+                <a class="dropdown-toggle" id="chosen_loc" data-toggle="dropdown" href="#">Choose Location<span class="caret"></span></a>
+                <ul id = "pick_locations" class="dropdown-menu dropdown-menu-left">
+                    <li><a class="dropdown-item" name="location" href="#" value="Carnegie Mellon University"> 0.5 mile - Carnegie Mellon University</a></li>
+                    <li><a class="dropdown-item" name="location" href="#" value="San Jose Shelter"> 0.6 miles - San Jose Shelter</a></li>
+                    <li><a class="dropdown-item" name="location" href="#" value="WeHope"> 0.7 miles - WeHope</a></li>
+                </ul>
+            </li>
         </div>
+        <br>
+        <br>
         <button type="button" class="btn btn-primary" onclick="updateProfile()">Submit</button>
     </form>
     <script>

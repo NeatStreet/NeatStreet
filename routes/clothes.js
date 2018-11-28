@@ -43,11 +43,12 @@ router.post('/', (req, res) => {
       });
 });
 
-router.delete('/', (req, res) => {
-  const { name, owner } = req.body;
+router.delete('/:owner/:name', (req, res) => {
+  const owner = req.params.owner;
+  const name = req.params.name;
   db.client.query(
     `DELETE FROM clothes WHERE name = '${name}' AND owner = '${owner}';`,
-    () => {
+    (err) => {
       res.json({status: 'delete clothes success'});
       res.end();
     });
