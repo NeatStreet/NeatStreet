@@ -20,5 +20,6 @@ CREATE TABLE clothes (
  posted varchar(255) DEFAULT 'true',
  date   varchar(255),
  time   timestamp,
- image  varchar(255)
+ image  varchar(255), 
+ requested varchar(255)
 );

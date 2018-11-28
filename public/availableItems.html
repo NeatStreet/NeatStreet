@@ -137,7 +137,7 @@
             if (item.name === undefined || item.name === "") continue;
             if (item.image === undefined || item.image === "") continue;
             displayImg = "../img/emptyitem.png";
-            var linkedItem = item.image; // TODO: change this to Cam's url
+            var linkedItem = "/item.html?name="+item.name; // TODO: change this to Cam's url
             var displayImg = item.image;
             var filledIn = itemTemplate
                 .replace(/<LINKED-ITEM>/g, linkedItem)
