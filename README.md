@@ -22,5 +22,6 @@ Start your server at: localhost:3000
 Didn't save password in a more secure way (like pwd_hash and salt);
 Didn't check for too short password or name;
 Hard code location suggestions based on zip code;
+Didn't support upload image to heroku.
 ```
 
