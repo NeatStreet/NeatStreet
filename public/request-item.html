@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" href="">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <title>Available Items</title>
@@ -14,6 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="stylesheet" href="css/fluid-gallery.css">
     <link rel="stylesheet" href="css/thumbnail-gallery.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" media="screen"
+       href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+   
 </head>
 
 <body>
@@ -53,45 +60,61 @@
 </div>
 <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
 <div class="container gallery-container">
+    <h3>REQUESTING ITEM</h3>
     <div class="tz-gallery">
-        <div class="row" id="content-row">
+        <div style="margin: 0 auto; border: 2px; border-style: solid; border-color: black; max-width: 840px;" class="row" id="content-row">
         </div>
     </div>
 </div>
-
-<div class="hidden" id='hidden'>
-    <div class="col-sm-6 col-md-4 item-container">
-        <a class="lightbox" href="#" id="linked-item">
-            <img src="../img/emptyitem.png" alt="Tunnel" id="display-img">
-        </a>
-        <div class="caption">
-            <h3 id="display-name">Item without a name</h3>
+<div class="well">
+        <div id="datetimepicker2" class="input-append">
+          <input data-format="MM/dd/yyyy HH:mm:ss PP" type="text"></input>
+          <span class="add-on">
+            <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+            </i>
+          </span>
         </div>
-    </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.tz-gallery');
-</script>
-
+      </div>
 
 <script
         src="https://code.jquery.com/jquery-3.2.1.js"
         integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+     src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+    </script> 
+    <script type="text/javascript"
+     src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+    </script>
+    <script type="text/javascript"
+     src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+    </script>
+    
+<script type="text/javascript">
+    $(function() {
+      $('#datetimepicker2').datetimepicker({
+        language: 'en',
+        pick12HourFormat: true
+      });
+    });
+  </script>
 <script>
     var itemTemplate = ' \
-    <div class="col-sm-6 col-md-4 item-container"> \
-            <a class="lightbox" href="<LINKED-ITEM>" id="linked-item"> \
-                <img src="<DISPLAY-IMG>" alt="Tunnel" id="display-img"> \
-            </a> \
-            <div class="caption"> \
-                <h3 id="display-name"><DISPLAY_NAME></h3> \
-            </div> \
+        <div class="col-sm-4 item-container"> \
+                <a class="lightbox" href="<LINKED-ITEM>" id="linked-item"> \
+                    <img style="max-width: 300px; min-width: 200px;" src="<DISPLAY-IMG>" alt="Tunnel" id="display-img"> \
+                </a> \
+        </div>\
+        <div class="col-sm-6" style="text-align: right"> \
+            <h3 id="display-name"><DISPLAY_NAME></h3> \
+                <div style="padding-top: 20px;">\
+                </div>\
         </div> \
-    '
+        '
 
     function getUrlVars() {
         var vars = {};
@@ -113,13 +136,15 @@
         req.send();
     }
 
-    function getClothesByCategory() {
-        const category = getUrlVars()['category'];
+    function getItem() {
+        const item = getUrlVars()['name'];
         var req = new XMLHttpRequest();
-        req.open('GET', '/api/v1/clothes/' + category);
+        console.log("item" + item)
+        req.open('GET', '/api/v1/clothes/items/' + item);
         req.responseType = 'json';
         req.onload = function() {
-        //   console.log(JSON.stringify(this.response));
+           console.log(this.response);
+           
         displayClothes(this.response);
         };
         req.send();
@@ -127,24 +152,19 @@
 
   $(function(){
     // getAllClothes();
-    getClothesByCategory();
+    getItem();
   });
 
   function displayClothes(data) {
-      console.log(data);
-      for (i = 0; i < data.length; i++) {
-            var item = data[i];
-            if (item.name === undefined || item.name === "") continue;
-            if (item.image === undefined || item.image === "") continue;
+            var item = data;
             displayImg = "../img/emptyitem.png";
-            var linkedItem = "/item.html?name="+item.name; // TODO: change this to Cam's url
+            var linkedItem = item.image; // TODO: change this to Cam's url
             var displayImg = item.image;
             var filledIn = itemTemplate
                 .replace(/<LINKED-ITEM>/g, linkedItem)
                 .replace(/<DISPLAY-IMG>/g, displayImg)
                 .replace(/<DISPLAY_NAME>/g, item.name);
             $("#content-row").append(filledIn);
-      }
   }
 </script>
 </body>
