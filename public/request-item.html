@@ -151,14 +151,13 @@
     }
 
     function getItem() {
-        const item = getUrlVars()['name'];
+        const item = getUrlVars()['name'].replace(/%20/g, " ");
         var req = new XMLHttpRequest();
         console.log("item" + item);
         req.open('GET', '/api/v1/clothes/items/' + item);
         req.responseType = 'json';
         req.onload = function() {
            console.log(this.response);
-
             displayClothes(this.response);
         };
         req.send();
@@ -172,12 +171,12 @@
   function displayClothes(data) {
             var item = data;
             displayImg = "../img/emptyitem.png";
-            var linkedItem = item.image; // TODO: change this to Cam's url
-            var displayImg = item.image;
+            var linkedItem = item[0].image; // TODO: change this to Cam's url
+            var displayImg = item[0].image;
             var filledIn = itemTemplate
                 .replace(/<LINKED-ITEM>/g, linkedItem)
                 .replace(/<DISPLAY-IMG>/g, displayImg)
-                .replace(/<DISPLAY_NAME>/g, item.name);
+                .replace(/<DISPLAY_NAME>/g, item[0].name);
             $("#content-row").append(filledIn);
   }
 </script>
