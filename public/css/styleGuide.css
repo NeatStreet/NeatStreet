@@ -322,9 +322,10 @@ fieldset {
 }
 
 .nav-container {
-    position: relative;
+    position: fixed;
     top: 0px;
     width: 100%;
+    display: block;
 }
 
 .nav-home {
@@ -449,5 +450,9 @@ fieldset {
 
 #img-upload{
     width: 100%;
+}
+
+.custom-bar {
+    color: white;
 }
 

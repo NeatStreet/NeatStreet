@@ -20,7 +20,7 @@
 </head>
 
 <body>
-<div class="nav-container">
+<div class="nav-container navbar-fixed-top">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
 
@@ -142,7 +142,7 @@
             if (item.name === undefined || item.name === "") continue;
             if (item.image === undefined || item.image === "") continue;
             displayImg = "../img/emptyitem.png";// TODO: change this to Cam's url
-            var linkedItem = "request-item.html?name="+item.name; 
+            var linkedItem = "request-item.html?name="+item.name;
             var displayImg = item.image;
             var filledIn = itemTemplate
             .replace(/<LINKED-ITEM>/g, linkedItem)
