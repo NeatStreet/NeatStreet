@@ -46,9 +46,9 @@
     <br>
     <input action="action" type="button" value="< Back" onclick="window.history.go(-1); return false;" />
     <div class="container">
-        <div class="alert alert-success alert-dismissible" role="alert" auto-close="1000">
-            Sorry, Image uploading is not available at this time. Coming soon!
-        </div>
+        <!--<div class="alert alert-success alert-dismissible" role="alert" auto-close="1000">-->
+            <!--Sorry, Image uploading is not available at this time. Coming soon!-->
+        <!--</div>-->
         <div class="panel panel-primary">
             <div class="panel-body">
                 <!-- <div id="cards">
@@ -123,12 +123,10 @@
     for (i = 0; i < data.data.length; i ++) {
       localStorage.setItem('name', data.data[i].name);
       var path = data.data[i].image;
-      // console.log(path);
-      var filename = path.substr(path.lastIndexOf('\\') + 1);
       var html = "";
       html = "<div id='cards'>" +
             "<div class='card1' style='width: 18rem;'>\n" +
-            "<img id='img1' src=./img/" + filename + " alt='Card image cap' class='img-responsive center-block'>" +
+            "<img id='img1' alt='Card image cap' class='img-responsive center-block'/>" +
             "<div class='card-body'>" +
             "<h5 id='title1' class='card-title'>" + "Title:" + data.data[i].name + "</h5>" +
             "<p id='size1' class='card-text'>" + "Size:" +  data.data[i].size + "</p>" +
@@ -136,6 +134,7 @@
             "<button type='button' class='btn-sm btn-primary' onclick=alertSold(localStorage.getItem('name'))>" + "Mark as Sold" + "</button>" +
             "</div>" +
             "</div>";
+      $('#img1').attr('src', path);
       $(".panel-body").append(html);
     }
 

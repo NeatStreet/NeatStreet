@@ -6,7 +6,7 @@ const user = require('./routes/user');
 const clothes = require('./routes/clothes');
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '300kb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // static routes

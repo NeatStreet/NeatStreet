@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="css/styleGuide.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 
@@ -58,9 +60,9 @@
         <label class="text-muted small text-truncate">Title</label>
         <input class="form-control" id="inputTitle">
         <label class="text-muted small text-truncate">Choose photo</label>
-        <form action="/img" enctype="multipart/form-data">
-            <input id="item_pic" name="test" type="file" accept="image/gif, image/jpeg, image/png">
-        </form>
+        <!--<form action="/img" enctype="multipart/form-data">-->
+            <!--<input id="item_pic" name="test" type="file" accept="image/gif, image/jpeg, image/png">-->
+        <!--</form>-->
         <label class="text-muted small text-truncate">Description</label>
         <textarea class="form-control" id="item_desc" placeholder="Description"></textarea>
         <label class="text-muted small text-truncate">Gender</label>
@@ -88,8 +90,23 @@
                 <li><a>XS</a></li>
             </ul>
         </div>
-        <!--<label class="text-muted small text-truncate">Zip Code</label>-->
-        <!--<input class="form-control" id="inputZipcode">-->
+        <br>
+        <div align="left">
+            <div class="col-md-6" align="left">
+                <div class="form-group">
+                    <label>Upload Image</label>
+                    <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp">
+                </span>
+            </span>
+                        <input type="text" class="form-control" readonly>
+                    </div>
+                    <img id='img-upload'/>
+                </div>
+            </div>
+        </div>
         <br>
         <div align="center">
             <button type="button" class="btn btn-primary" onclick="window.history.go(-1); return false;">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -130,7 +147,44 @@
   function confirmClick() {
     addToDB();
   }
+  let uploadImg = '';
+  $(document).ready( function() {
+    $(document).on('change', '.btn-file :file', function() {
+      var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.trigger('fileselect', [label]);
+    });
 
+    $('.btn-file :file').on('fileselect', function(event, label) {
+
+      var input = $(this).parents('.input-group').find(':text'),
+        log = label;
+
+      if( input.length ) {
+        input.val(log);
+      } else {
+        if( log ) alert(log);
+      }
+
+    });
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#img-upload').attr('src', e.target.result);
+          uploadImg = e.target.result;
+
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $("#imgInp").change(function(){
+      readURL(this);
+    });
+  });
   function addToDB() {
     var owner = localStorage.getItem('login');
     console.log(owner);
@@ -143,11 +197,11 @@
     // var location = document.querySelector("#inputZipcode").value;
     var location = '';
     console.log(location);
-    var image = document.querySelector("#item_pic").value;
+    var image = uploadImg;
     console.log(image);
-    if (name == "" || category === "Category" || size === "Size" || image == "") {
-        window.confirm("Please fill all fields.");
-        return;
+    if (name === "" || category === "Category" || size === "Size" || uploadImg === "") {
+      window.confirm("Please fill all fields.");
+      return;
     }
     var req = new XMLHttpRequest();
     req.open('POST', '/api/v1/clothes');
@@ -167,6 +221,7 @@
     //console.log(JSON.stringify({ owner, name, category, size, location, image }));
     req.send(JSON.stringify({ owner, name, category, size, location, image }));
   }
+
 
   window.sr = ScrollReveal();
   sr.reveal('.navbar', {

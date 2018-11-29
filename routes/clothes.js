@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 router.get('/:category', (req, res) => {
   const category = req.params.category;
   db.client.query(
-    `SELECT * From clothes WHERE category = '${category}'`,
+    `SELECT * From clothes WHERE LOWER(category) = '${category}'`,
     (err, result) => {
       res.json(result.rows);
       res.end();
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
 	db.client.query(
       `INSERT INTO clothes(owner, name, category, size, location, image) VALUES('${owner}', '${name}', '${category}', 
       '${size}', '${location}', '${image}');`,
-      () => {
+      (err, result) => {
         res.json({status: 'insert clothes success'});
         res.end();
       });
