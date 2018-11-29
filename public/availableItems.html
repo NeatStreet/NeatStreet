@@ -131,12 +131,10 @@
   });
 
   function displayClothes(data) {
-      console.log(data);
       for (i = 0; i < data.length; i++) {
             var item = data[i];
             if (item.name === undefined || item.name === "") continue;
             if (item.image === undefined || item.image === "") continue;
-            displayImg = "../img/emptyitem.png";
             var linkedItem = "/item.html?name="+item.name; // TODO: change this to Cam's url
             var displayImg = item.image;
             var filledIn = itemTemplate
